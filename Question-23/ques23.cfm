@@ -3,6 +3,11 @@
     <head>
         <title>Employment Application</title>
         <link rel="stylesheet" href="./Assets/css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="./Script/ques23.js"></script>
+
     </head>
     <body>
         <div class="mainBody">
@@ -10,7 +15,9 @@
                 <div class="logo">
                     <img src="./Assets/wufooImage.PNG" alt="img">
                 </div>
+                
                 <div class="secondMain">
+                    <form action="Component.ques23.cfc?method=formUpload" method="post">
                     <div class="secondMainFt">
                         <div class="head">
                             <h2>Employment Application</h2>
@@ -35,12 +42,14 @@
                         <span class="redIcon">*</span>         
                     </div>
                     <div class="radioBtnCont">
-                        <form class="btnOne">
-                            <input type="radio" name="yes"><span>Yes</span>
-                        </form>
-                        <form class="btnOne">
-                            <input type="radio" name="no"><span>No</span>
-                        </form>
+                        <div class="btnOne">
+                            <div class="rdBtn">
+                                <input type="radio" name="yes"><span>Yes</span>
+                            </div>
+                            <div class="rdBtn">
+                                <input type="radio" name="no"><span>No</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="relocate">
                         <p class="relocateTxt">When can you start?</p>
@@ -166,15 +175,16 @@
                                 <p class="month">####</p>
                             </div>
                         </div>
+                    </form>
                     </div>
                     <div class="submitBtn">
-                        <button class="sub">Submit</button>
+                        <button class="sub" onclick="validateForm()">Submit</button>
                     </div>
                     <div class="lastCont">
-                        <p class="lastContTxt">
-                            This site is protected by reCAPTCHA Enterprise and the Google
-                            <a href="#"> Privacy Policy   </a>   and <a href="#"> Terms of Service</a> apply</p>
+                        <p class="lastContTxt">This site is protected by reCAPTCHA Enterprise and the Google
+                        <a href="#"> Privacy Policy   </a>   and <a href="#"> Terms of Service</a> apply</p>
                     </div>
+                
                 </div>
             </div>
         </div>
