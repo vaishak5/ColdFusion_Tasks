@@ -243,3 +243,49 @@ body{
     border-right: 1px solid #c3c3c3;
     border-bottom: 1px solid #ddd;
 }
+#relocateCont, #fileCont,#salaryCont{
+    padding:5px;
+}
+.highlight {
+    background-color: #fff7c0;
+    
+}
+.portflioEmail p{
+    font-size: 12.35px;
+    font-weight: bold;
+    color: #444444 !important;
+}
+.errorContainer ,.errorContainerSd,.errorContainerThd,.errorContainerForth,.errorContainerFifth,.errorContainerSixth{
+    padding:5px;
+}
+.errorBackground {
+    background-color: #8d3a3a;
+}
+
+.error {
+    display: none; 
+}
+.errorTxt{
+    display: none;
+    
+}
+#msgError{
+    text-align: center;
+    border: 1px solid red;
+    padding: 12px;
+    border-radius: 28px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#msgError p{
+    font-size: 17px;
+    color:#df0000;
+}
+.highlighted{
+    color: red;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 6px;
+    background-color:#ffdfdf;
+}
+
