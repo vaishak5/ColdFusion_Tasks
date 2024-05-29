@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var textBoxes = document.querySelectorAll('#boxxSecond input[type="text"]');
     var boxSecondDiv = document.getElementById('boxxSecond');
     var urlInput = document.getElementById('urlCont');
-    var boxThirdDiv = document.getElementById('boxxThird');
+    var boxThirdDiv = document.getElementById('thdBox');
     var fileDiv = document.getElementById('fileCont');
     var imgSelect = document.getElementById('myFile');
     var salary=document.getElementById('salaryCont');

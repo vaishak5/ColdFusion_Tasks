@@ -31,22 +31,22 @@
     border-bottom: 1px dotted #ddd;
     width: 100%;
 }
-.position, .relocate{
+.position, .relocate {
     display:flex;
     gap:10px;
     align-items: baseline;
 }
-.positionTxt, .relocateTxt{
+.positionTxt, .relocateTxt, .salaryTxt, .attachTxt,.relocateTxtCont{
     font-weight: bold;
-    color: #444444 !important;
+    color: #444444 ;
     font-size: 12.35px;
 }
 .redIcon{
     color:red;
 }
-#selectConts{
+/*#selectConts{
     width: 30%;
-}
+}*/
 .radioBtnCont{
     display: flex;
     gap: 10px;
@@ -98,7 +98,7 @@
     border-left: 1px solid #c3c3c3;
     border-right: 1px solid #c3c3c3;
     border-bottom: 1px solid #ddd;
-    width:59%;
+    width:99%;
 }
 .chooseBtn p{
     font-size: 10.92px;
@@ -125,7 +125,6 @@
     display: flex;
     align-items: baseline;
     gap: 5px;
-    border-bottom: 1px dotted #ddd;
 }
 .contact p{
     font-size: 14.3px;
@@ -166,7 +165,6 @@
     gap: 6px;
 }
 #email{
-    width: 393.6px;
     height: 26px;
     border-top: 1px solid #7c7c7c;
     border-left: 1px solid #c3c3c3;
@@ -253,15 +251,13 @@ body{
 .portflioEmail p{
     font-size: 12.35px;
     font-weight: bold;
-    color: #444444 !important;
+    color: #444444;
 }
 .errorContainer ,.errorContainerSd,.errorContainerThd,.errorContainerForth,.errorContainerFifth,.errorContainerSixth{
-    padding:5px;
+    /*padding:5px;*/
+    width:55%;
+    margin-bottom: 5px;
 }
-.errorBackground {
-    background-color: #8d3a3a;
-}
-
 .error {
     display: none; 
 }
@@ -272,10 +268,9 @@ body{
 #msgError{
     text-align: center;
     border: 1px solid red;
-    padding: 12px;
-    border-radius: 28px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 15px auto 15px auto;
+    padding: 1em 0 1em 0;
+    border-radius: 20px;
 }
 #msgError p{
     font-size: 17px;
@@ -287,5 +282,20 @@ body{
     border-radius: 10px;
     padding: 6px;
     background-color:#ffdfdf;
+}
+.httpTxt{
+    width:100%;
+}
+.boxFirst, .boxSecond,.boxThird,.contact,.boxForth,.boxFifth,.boxSixth{
+    padding:5px;
+}
+.salary,.fileConts,.relocates{
+    width:50%;
+}
+#selectConts{
+    width:60%;
+}
+.contact{
+    border-top: 1px dotted #ddd;
 }
 

@@ -14,7 +14,7 @@
                     <img src="./Assets/wufooImage.PNG" alt="img">
                 </div>
                 <div class="secondMain" id="formContainer">
-                    <form action="" method="post" onsubmit="return validateForm()">
+                    <form action="Component/ques23.cfc?method=formUpload" method="post">
                     <div class="secondMainFt">
                         <div class="head">
                             <h2>Employment Application</h2>
@@ -27,8 +27,8 @@
                     </div>
                     <div class="errorContainer">
                         <div class="boxFirst" id="boxx">
-                            <div class="position">
-                                <p class="positionTxt">Which position are you applying for?</p>
+                            <div class="position" >
+                                <p class="positionTxt" id="positionTxtt">Which position are you applying for?</p>
                                 <span class="redIcon">*</span>
                             </div>
                             <div class="selectSet">
@@ -43,9 +43,9 @@
                             <span id="fieldError" class="error"></span>
                         </div>
                     </div>
-                    <div id="relocateCont">
+                    <div id="relocateCont" class="relocates">
                             <div class="relocate">
-                                <p class="relocateTxt">Are you willing to relocate? </p>
+                                <p class="relocateTxtCont">Are you willing to relocate? </p>
                                 <span class="redIcon">*</span>         
                             </div>
                             <div class="radioBtnCont" id="radioContainer">
@@ -97,23 +97,23 @@
                                 <span id="monthError" class="error"></span>
                             </div>
                         </div>
-                        <div class="errorContainerThd">
+                        <div class="errorContainerThd" id="thdBox">
                             <div class="boxThird" id="boxxThird">
                             
                                 <div class="portflio">
                                     <p class="relocateTxt">Portfolio Web Site</p>
-                                    <form class="httpTxt">
+                                    <div class="httpTxt">
                                         <input type="text" value="http: / /" id="urlCont">
-                                    </form>
+                                    </div>
                                 </div>
                             
                                 <span id="urlError" class="error"></span>
                             </div>
                         </div>
 
-                        <div id="fileCont">
+                        <div id="fileCont" class="fileConts">
                             <div class="attach">
-                                <p class="relocateTxt">Attach a Copy of Your Resume</p>
+                                <p class="attachTxt">Attach a Copy of Your Resume</p>
                             </div>
                             <div class="chooseBtn" id="chooseImg">
                                 <input type="file" id="myFile">
@@ -121,7 +121,7 @@
                             </div>
                         </div>
                         <div class="salary" id="salaryCont">
-                            <p class="relocateTxt">Salary Requirements</p>
+                            <p class="salaryTxt">Salary Requirements</p>
                             <div class="symbolBox">
                                 <span class="symbolSd">$</span>
                                 <div class="inputConts">

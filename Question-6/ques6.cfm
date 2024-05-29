@@ -17,9 +17,7 @@
     <cfif structKeyExists(form, "submit")>
     <cfset obj = createObject("component", "Component.ques6")>
     <cfset local.result = obj.getIdentify(form.key, form.value)>
-        <cfset myStructure = {}>
-        <cfset myStructure[form.key] = form.value>
-        <cfdump var="#myStructure#">
+        
     </cfif>
 </body>
 </html>

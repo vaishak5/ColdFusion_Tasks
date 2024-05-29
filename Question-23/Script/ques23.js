@@ -18,74 +18,69 @@ $(document).ready(function () {
         var phoneThd=$("#phoneThd").val().trim();
         var phone=phoneFt+phoneSnd+phoneThd;
         $("#nameError, #emailError,#mobileError,#fieldError,#monthError,#urlError").html("");
-        $(".errorContainer").css("background-color","#ffdfdf");
-        $(".errorContainerSd").css("background-color","#ffdfdf");
-        $(".errorContainerThd").css("background-color","#ffdfdf");
-        $(".errorContainerForth").css("background-color","#ffdfdf");
-        $(".errorContainerFifth").css("background-color","#ffdfdf");
-        $(".errorContainerSixth").css("background-color","#ffdfdf");
         $(".error").hide();
-        $(".errorContainer").removeClass("errorBackground");
-        $(".errorContainerSd").removeClass("errorBackground");
-        $(".errorContainerThd").removeClass("errorBackground");
-        $(".errorContainerForth").removeClass("errorBackground");
-        $(".errorContainerFifth").removeClass("errorBackground");
-        $(".errorContainerSixth").removeClass("errorBackground");
         var isValid = true;
         if (firstName === "" || lastName === "") {
             $("#nameError").html("This field is required. Please enter a value.");
-            $("#boxxFourth .errorContainerForth").addClass("errorBackground"); 
+            $(".errorContainerForth").css("background-color","#ffdfdf");
             $("#nameError").show(); 
             isValid = false;
         } else {
-            $("#boxxFourth .errorContainerForth").removeClass("errorBackground"); 
+            $(".errorContainerForth").css("background-color", "white");
             $("#nameError").hide(); 
         }
         if (!(/\S+@\S+\.\S+/.test(email)) || email === "") {
-            $("#emailError").html("Please enter a valid email address.");
-            $("#boxxFifth .errorContainerFifth").addClass("errorBackground"); 
+            $("#emailError").html("This field is required. Please enter a value.");
+            $(".errorContainerFifth").css("background-color","#ffdfdf"); 
+            $(".email").css("color", "red");
             $("#emailError").show(); 
             isValid = false;
         } else {
-            $("#boxxFifth .errorContainerFifth").removeClass("errorBackground"); 
+            $(".errorContainerFifth").css("background-color", "white"); 
+            $(".email").css("color", "#444444");
             $("#emailError").hide(); 
         }
         if (!(/^\d{10}$/.test(phone)) || phone==="") {
             $("#mobileError").html("This field is required. Please enter a value.");
-            $("#boxSix .errorContainerSixth").addClass("errorBackground"); 
+            $(".errorContainerSixth").css("background-color","#ffdfdf"); 
             $("#mobileError").show(); 
             isValid = false;
         } else {
-            $("#boxSix .errorContainerSixth").removeClass("errorBackground"); 
+            $(".errorContainerSixth").css("background-color", "white"); 
             $("#mobileError").hide(); 
         }
         if (firstField === "") {
             $("#fieldError").html("This field is required. Please enter a value.");
-            $("#boxx .errorContainer").addClass("errorBackground"); 
+            $(".errorContainer").css("background-color","#ffdfdf"); 
+            $(".positionTxt").css("color", "red");
             $("#fieldError").show(); 
             isValid = false;
         } else {
-            $("#boxx .errorContainer").removeClass("errorBackground"); 
+            $(".errorContainer").css("background-color", "white");
+            $(".positionTxt").css("color", "#444444");
             $("#fieldError").hide(); 
         }
+        
          if (year==="") {
             $("#monthError").html("This field is required. Please enter a value.");
-            $("#boxxSecond .errorContainerSd").addClass("errorBackground"); 
+            $(".errorContainerSd").css("background-color","#ffdfdf"); 
+            $(".relocateTxt").css("color", "red");
             $("#monthError").show(); 
             isValid = false;
          }
          else {
-            $("#boxxSecond .errorContainerSd").removeClass("errorBackground"); 
+            $(".errorContainerSd").css("background-color", "white"); 
+            $(".relocateTxt").css("color", "#444444");
             $("#monthError").hide(); 
         }
          if (!/^http:\/\/\w+\.\w{2,3}$/.test(url) || url === "") {
             $("#urlError").html("Please enter a valid url in http://website.com format.");
-            $("#boxxThird .errorContainerThd").addClass("errorBackground"); 
+            $(".errorContainerThd").css("background-color","#ffdfdf"); 
             $("#urlError").show();
             isValid = false;
         }
         else {
-            $("#boxxThird .errorContainerThd").removeClass("errorBackground"); 
+            $(".errorContainerThd").css("background-color", "white");
             $("#monthError").hide(); 
         }
         if (!isValid) {
