@@ -4,7 +4,7 @@
         <title>Employment Application</title>
         <link rel="stylesheet" href="./Assets/css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="./Script/ques23.js"></script>
+        <script src="./Script/ques23.js"></script> 
         <script src="./Script/script.js"></script>
     </head>
     <body>
@@ -14,36 +14,37 @@
                     <img src="./Assets/wufooImage.PNG" alt="img">
                 </div>
                 <div class="secondMain" id="formContainer">
-                    <form action="Component/ques23.cfc?method=formUpload" method="post">
-                    <div class="secondMainFt">
-                        <div class="head">
-                            <h2>Employment Application</h2>
-                            <p>Infinity Box Inc.</p>
-                        </div>
-                    </div>
-                    <div class="errorTxt" id="msgError">
-                        <p>There was a problem with your submission.</p>
-                        <span>Errors have been <b class="highlighted">highlighted</b> below</span>
-                    </div>
-                    <div class="errorContainer">
-                        <div class="boxFirst" id="boxx">
-                            <div class="position" >
-                                <p class="positionTxt" id="positionTxtt">Which position are you applying for?</p>
-                                <span class="redIcon">*</span>
+                    <form action="ques23.cfm" method="post">
+
+                        <div class="secondMainFt">
+                            <div class="head">
+                                <h2>Employment Application</h2>
+                                <p>Infinity Box Inc.</p>
                             </div>
-                            <div class="selectSet">
-                                <select id="selectConts">
-                                    <option value="" selected="selected"></option>
-                                    <option value="Interface Designer">Interface Designer</option>
-                                    <option value="Software Engineer">Software Engineer</option>
-                                    <option value="System Administrator">System Administrator </option>
-                                    <option value="Office Manager">Office Manager </option>
-                                </select>
-                            </div>
-                            <span id="fieldError" class="error"></span>
                         </div>
-                    </div>
-                    <div id="relocateCont" class="relocates">
+                        <div class="errorTxt" id="msgError">
+                            <p>There was a problem with your submission.</p>
+                            <span>Errors have been <b class="highlighted">highlighted</b> below</span>
+                        </div>
+                        <div class="errorContainer" id="errorContainers">
+                            <div class="boxFirst" id="boxx">
+                                <div class="position" >
+                                    <p class="positionTxt" id="positionTxtt">Which position are you applying for?</p>
+                                    <span class="redIcon">*</span>
+                                </div>
+                                <div class="selectSet">
+                                    <select id="selectConts" name="positionField">
+                                        <option value="" selected="selected"></option>
+                                        <option value="Interface Designer">Interface Designer</option>
+                                        <option value="Software Engineer">Software Engineer</option>
+                                        <option value="System Administrator">System Administrator </option>
+                                        <option value="Office Manager">Office Manager </option>
+                                    </select>
+                                </div>
+                                <span id="fieldError" class="error"></span>
+                            </div>
+                        </div>
+                        <div id="relocateCont" class="relocates">
                             <div class="relocate">
                                 <p class="relocateTxtCont">Are you willing to relocate? </p>
                                 <span class="redIcon">*</span>         
@@ -68,7 +69,7 @@
                                 <div class="inputSet">
                                     <div class="inputConts">
                                         <div class="box">
-                                            <input type="text" id="textBoxFt" maxlength="2">
+                                            <input type="text" id="textBoxFt" maxlength="2" name="month" onkeyup="moveCursor(this, 'textBoxSnd')">
                                             <p class="month">MM</p>
                                         </div>
                                         <div class="symbols">
@@ -77,7 +78,7 @@
                                     </div>
                                     <div class="inputConts">
                                         <div class="box">
-                                            <input type="text" id="textBoxSnd" maxlength="2">
+                                            <input type="text" id="textBoxSnd" maxlength="2" name="date" onkeyup="moveCursor(this, 'textBoxThd')">
                                             <p class="month">DD</p>
                                         </div>
                                         <div class="symbols">
@@ -86,7 +87,7 @@
                                     </div>
                                     <div class="inputContss">
                                         <div class="box">
-                                            <input type="text" id="textBoxThd" maxlength="4">
+                                            <input type="text" id="textBoxThd" maxlength="4" name="yr">
                                             <p class="month">YYYY</p>
                                         </div>
                                         <div class="dateImg">
@@ -103,14 +104,13 @@
                                 <div class="portflio">
                                     <p class="relocateTxt">Portfolio Web Site</p>
                                     <div class="httpTxt">
-                                        <input type="text" value="http: / /" id="urlCont">
+                                        <input type="text" value="http://" id="urlCont" name="urlLink">
                                     </div>
                                 </div>
                             
                                 <span id="urlError" class="error"></span>
                             </div>
                         </div>
-
                         <div id="fileCont" class="fileConts">
                             <div class="attach">
                                 <p class="attachTxt">Attach a Copy of Your Resume</p>
@@ -153,14 +153,14 @@
                                 <div class="firstLast">
                                     <div class="inputConts">
                                         <div class="boxx">
-                                            <input type="text" id="firstname">
+                                            <input type="text" id="firstname" name="firstName">
                                             <label for="firstName">First</label>
                                         
                                         </div>
                                     </div>
                                     <div class="inputConts">
                                         <div class="boxx">
-                                            <input type="text" id="lastname">
+                                            <input type="text" id="lastname" name="lastName">
                                             <label for="lastName">Last</label>
                                         
                                         </div>
@@ -176,7 +176,7 @@
                                     <span class="redIcon">*</span>
                                 </div>
                                 <div class="boxx">
-                                    <input type="email" id="email">
+                                    <input type="email" id="email" name="email">
                                 </div>
                                 <span id="emailError" class="error"></span><br>
                             </div>
@@ -188,44 +188,47 @@
                                     <span class="redIcon">*</span>
                                 </div>
                                 <div class="inputSet">
-                                    <div class="inputConts">
-                                        <div class="box">
-                                            <input type="text" id="phoneFt" maxlength="3" onkeypress="return (event.charCode >47 && event.charCode < 59)">
-                                            <label for="phoTxt">###</label>
-                                        </div>
-                                        <div class="symbols">
-                                            <p class="symbol">-</p>
-                                        </div>
-                                    </div>
-                                    <div class="inputConts">
-                                        <div class="box">
-                                            <input type="text" id="phoneSnd" maxlength="3" onkeypress="return (event.charCode >47 && event.charCode < 59)">
-                                            <label for="phoTxt">###</label>
-                                        </div>
-                                        <div class="symbols">
-                                            <p class="symbol">-</p>
-                                        </div>
-                                    </div>
-                                    <div class="inputContss">
-                                        <div class="box">
-                                            <input type="text" id="phoneThd" maxlength="4" onkeypress="return (event.charCode >47 && event.charCode < 59)">
-                                            <label for="phoTxt">####</label>
-                                        </div>
-                                    </div>
-                                </div>
+    <div class="inputConts">
+        <div class="box">
+            <input type="text" id="phoneFt" maxlength="3" name="phoneFtField" onkeyup="moveCursor(this, 'phoneSnd')">
+            <label for="phoneFt">###</label>
+        </div>
+        <div class="symbols">
+            <p class="symbol">-</p>
+        </div>
+    </div>
+    <div class="inputConts">
+        <div class="box">
+            <input type="text" id="phoneSnd" maxlength="3" name="phoneSndField" onkeyup="moveCursor(this, 'phoneThd')">
+            <label for="phoneSnd">###</label>
+        </div>
+        <div class="symbols">
+            <p class="symbol">-</p>
+        </div>
+    </div>
+    <div class="inputContss">
+        <div class="box">
+            <input type="text" id="phoneThd" maxlength="4" name="phoneThdField">
+            <label for="phoneThd">####</label>
+        </div>
+    </div>
+</div>
+
                                 <span id="mobileError" class="error"></span><br>
                             </div>
                         </div>
+                        <div class="subButton">
+                            <input type="submit" class="submit" name="submit" id="submitBtn" value="Submit">
+                        </div>
                     </form>
-                        
-                        <div >
-                            <button type="button" class="submit" id="submitBtn">Submit</button>
-                        </div>
-                        <p id="formDetails"></p>
-                        <div class="lastCont">
-                            <p class="lastContTxt">This site is protected by reCAPTCHA Enterprise and the Google
-                            <a href="#"> Privacy Policy   </a>   and <a href="#"> Terms of Service</a> apply</p>
-                        </div>
+                    <cfif structKeyExists(form, "submit")>
+                        <cfset obj=createObject("component","Component.ques23" )>
+                        <cfset local.result=obj.formUpload(form.positionField,form.month,form.date,form.yr,form.urlLink,form.firstName,form.lastName,form.email,form.phoneFtField,form.phoneSndField,form.phoneThdField)>
+                    </cfif>
+                    <p id="formDetails"></p>
+                    <div class="lastCont">
+                        <p class="lastContTxt">This site is protected by reCAPTCHA Enterprise and the Google
+                        <a href="#"> Privacy Policy   </a>   and <a href="#"> Terms of Service</a> apply</p>
                     </div>
                 </div>
             </div>

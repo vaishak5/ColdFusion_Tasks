@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+        
     var selectElement = document.getElementById('selectConts');
     var boxFirstDiv = document.getElementById('boxx');
     var relocateDiv = document.getElementById('relocateCont');
@@ -118,4 +119,28 @@ document.addEventListener('DOMContentLoaded', function () {
     phoneThdInput.addEventListener('blur', function () {
         phoneDiv.classList.remove('highlight');
     });
+    
+    
+});
+function moveCursor(input,nextField) {
+    if (input.value.length >= input.maxLength) {
+        document.getElementById(nextField).focus();
+    }
+}
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    if(firstField === "" || year === "" || url === "" || firstName === "" || lastName === "" || email === "" || phone === ""){
+        showError();
+
+    }
+    else{
+        hideError();
+    }
+    function showError(){
+        errorContainers.classList.add(error);
+
+    }
+    function hideError(){
+        errorContainers.classList.remove(error);
+    }
 });
