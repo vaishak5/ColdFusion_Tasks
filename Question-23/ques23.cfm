@@ -14,7 +14,8 @@
                     <img src="./Assets/wufooImage.PNG" alt="img">
                 </div>
                 <div class="secondMain" id="formContainer">
-                    <form action="ques23.cfm" method="post">
+                    <!---<form id="employmentForm" action="ques23.cfm" method="post">--->
+                    <form id="employmentForm" action="ques23.cfm" method="post">
 
                         <div class="secondMainFt">
                             <div class="head">
@@ -188,31 +189,31 @@
                                     <span class="redIcon">*</span>
                                 </div>
                                 <div class="inputSet">
-    <div class="inputConts">
-        <div class="box">
-            <input type="text" id="phoneFt" maxlength="3" name="phoneFtField" onkeyup="moveCursor(this, 'phoneSnd')">
-            <label for="phoneFt">###</label>
-        </div>
-        <div class="symbols">
-            <p class="symbol">-</p>
-        </div>
-    </div>
-    <div class="inputConts">
-        <div class="box">
-            <input type="text" id="phoneSnd" maxlength="3" name="phoneSndField" onkeyup="moveCursor(this, 'phoneThd')">
-            <label for="phoneSnd">###</label>
-        </div>
-        <div class="symbols">
-            <p class="symbol">-</p>
-        </div>
-    </div>
-    <div class="inputContss">
-        <div class="box">
-            <input type="text" id="phoneThd" maxlength="4" name="phoneThdField">
-            <label for="phoneThd">####</label>
-        </div>
-    </div>
-</div>
+                                    <div class="inputConts">
+                                        <div class="box">
+                                            <input type="text" id="phoneFt" maxlength="3" name="phoneFtField" onkeyup="moveCursor(this, 'phoneSnd')">
+                                            <label for="phoneFt">###</label>
+                                        </div>
+                                        <div class="symbols">
+                                            <p class="symbol">-</p>
+                                        </div>
+                                    </div>
+                                    <div class="inputConts">
+                                        <div class="box">
+                                            <input type="text" id="phoneSnd" maxlength="3" name="phoneSndField" onkeyup="moveCursor(this, 'phoneThd')">
+                                            <label for="phoneSnd">###</label>
+                                        </div>
+                                        <div class="symbols">
+                                            <p class="symbol">-</p>
+                                        </div>
+                                    </div>
+                                    <div class="inputContss">
+                                        <div class="box">
+                                            <input type="text" id="phoneThd" maxlength="4" name="phoneThdField">
+                                            <label for="phoneThd">####</label>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <span id="mobileError" class="error"></span><br>
                             </div>
@@ -221,10 +222,10 @@
                             <input type="submit" class="submit" name="submit" id="submitBtn" value="Submit">
                         </div>
                     </form>
-                    <cfif structKeyExists(form, "submit")>
+                   <!---  <cfif structKeyExists(form, "submit")>
                         <cfset obj=createObject("component","Component.ques23" )>
                         <cfset local.result=obj.formUpload(form.positionField,form.month,form.date,form.yr,form.urlLink,form.firstName,form.lastName,form.email,form.phoneFtField,form.phoneSndField,form.phoneThdField)>
-                    </cfif>
+                    </cfif> --->
                     <p id="formDetails"></p>
                     <div class="lastCont">
                         <p class="lastContTxt">This site is protected by reCAPTCHA Enterprise and the Google

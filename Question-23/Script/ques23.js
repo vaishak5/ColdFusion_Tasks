@@ -1,6 +1,41 @@
 $(document).ready(function () {
-    $("#submitBtn").on("click", function () {
-        validateForm();
+    $("#submitBtn").on("click", function (event) {
+        var firstField = $("#selectConts").val().trim();
+        var textBoxFt = $("#textBoxFt").val().trim();
+        var textBoxSnd = $("#textBoxSnd").val().trim();
+        var textBoxThd = $("#textBoxThd").val().trim();
+        var year = textBoxFt + textBoxSnd + textBoxThd;
+        var url = $("#urlCont").val().trim();
+        var firstName = $("#firstname").val().trim();
+        var lastName = $("#lastname").val().trim();
+        var email = $("#email").val().trim();
+        var phoneFt = $("#phoneFt").val().trim();
+        var phoneSnd = $("#phoneSnd").val().trim();
+        var phoneThd = $("#phoneThd").val().trim();
+        var phone = phoneFt + phoneSnd + phoneThd;
+        if(validateForm()){
+            $.ajax({
+                type: "POST",
+                url: "./Component/ques23.cfc?method=formUpload",
+                datatype: "JSON",
+                data: {firstField: firstField,
+                    year: year,
+                    url: url,
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    phone: phone,
+                },
+                success: function(response) {
+                    alert("Form submitted successfully!");
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert("An error occurred while submitting the form. Please try again.");
+                }
+            });
+        }
+        return false;
     });
 
     function validateForm() {
@@ -17,50 +52,21 @@ $(document).ready(function () {
         var phoneSnd = $("#phoneSnd").val().trim();
         var phoneThd = $("#phoneThd").val().trim();
         var phone = phoneFt + phoneSnd + phoneThd;
-        $("#nameError, #emailError,#mobileError,#fieldError,#monthError,#urlError").html("");
+
+       
         $(".error").hide();
+
         var isValid = true;
-
-        if (firstName === "" || lastName === "") {
-            $("#nameError").html("This field is required. Please enter a value.");
-            $(".errorContainerForth").css("background-color", "#ffdfdf");
-            $("#nameError").show();
-            isValid = false;
-        } else {
-            $(".errorContainerForth").css("background-color", "white");
-            $("#nameError").hide();
-        }
-
-        if (!(/\S+@\S+\.\S+/.test(email)) || email === "") {
-            $("#emailError").html("This field is required. Please enter a valid email address.");
-            $(".errorContainerFifth").css("background-color", "#ffdfdf");
-            $("#emailError").show();
-            isValid = false;
-        } else {
-            $(".errorContainerFifth").css("background-color", "white");
-            $("#emailError").hide();
-        }
-
-        if (!(/^\d{10}$/.test(phone)) || phone === "") {
-            $("#mobileError").html("This field is required. Please enter a valid phone number.");
-            $(".errorContainerSixth").css("background-color", "#ffdfdf");
-            $("#mobileError").show();
-            isValid = false;
-        } else {
-            $(".errorContainerSixth").css("background-color", "white");
-            $("#mobileError").hide();
-        }
-
-        if (firstField === "") {
-            $("#fieldError").html("This field is required. Please select a value.");
+        if(firstField===""){
+            $("#fieldError").html("This field is required. Please enter a value.");
             $(".errorContainer").css("background-color", "#ffdfdf");
             $("#fieldError").show();
             isValid = false;
-        } else {
+        } 
+        else {
             $(".errorContainer").css("background-color", "white");
             $("#fieldError").hide();
         }
-
         if (year === "") {
             $("#monthError").html("This field is required. Please enter a value.");
             $(".errorContainerSd").css("background-color", "#ffdfdf");
@@ -70,9 +76,8 @@ $(document).ready(function () {
             $(".errorContainerSd").css("background-color", "white");
             $("#monthError").hide();
         }
-
-        if (!/^http:\/\/\w+\.\w{2,3}$/.test(url) || url === "") {
-            $("#urlError").html("Please enter a valid URL in http://website.com format.");
+        if(!/^http:\/\/\w+\.\w{2,3}$/.test(url) || url === ""){
+            $("#urlError").html("This field is required. Please enter a value.");
             $(".errorContainerThd").css("background-color", "#ffdfdf");
             $("#urlError").show();
             isValid = false;
@@ -80,15 +85,39 @@ $(document).ready(function () {
             $(".errorContainerThd").css("background-color", "white");
             $("#urlError").hide();
         }
-
-        if (!isValid) {
-            $(".errorTxt").show();
+        if (firstName === "" || lastName === "") {
+            $("#nameError").html("This field is required. Please enter a value.");
+            $(".errorContainerForth").css("background-color", "#ffdfdf");
+            $("#nameError").show();
+            isValid = false;
         } else {
-            $(".errorTxt").hide();
-            var filledDetails = " ";
-            $("#formDetails").html(filledDetails);
-            alert("Form submitted successfully!");
-            window.location.reload();
+            $(".errorContainerForth").css("background-color", "white");
+            $("#nameError").hide();
         }
+        if(!(/\S+@\S+\.\S+/.test(email)) || email === ""){
+            $("#emailError").html("This field is required. Please enter a value.");
+            $(".errorContainerFifth").css("background-color", "#ffdfdf");
+            $("#emailError").show();
+            isValid = false;
+        } else {
+            $(".errorContainerFifth").css("background-color", "white");
+            $("#emailError").hide();
+
+        }
+        if(!(/^\d{10}$/.test(phone)) || phone === ""){
+            $("#mobileError").html("This field is required. Please enter a value.");
+            $(".errorContainerSixth").css("background-color", "#ffdfdf");
+            $("#mobileError").show();
+            isValid = false;
+        } else {
+            $(".errorContainerSixth").css("background-color", "white");
+            $("#mobileError").hide();
+        }
+        if(!isValid){
+            event.preventDefault();
+            $(".errorTxt").show();
+            return false;
+        }
+    return true;
     }
 });

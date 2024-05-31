@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-        
     var selectElement = document.getElementById('selectConts');
     var boxFirstDiv = document.getElementById('boxx');
     var relocateDiv = document.getElementById('relocateCont');
@@ -127,20 +126,3 @@ function moveCursor(input,nextField) {
         document.getElementById(nextField).focus();
     }
 }
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
-    if(firstField === "" || year === "" || url === "" || firstName === "" || lastName === "" || email === "" || phone === ""){
-        showError();
-
-    }
-    else{
-        hideError();
-    }
-    function showError(){
-        errorContainers.classList.add(error);
-
-    }
-    function hideError(){
-        errorContainers.classList.remove(error);
-    }
-});
