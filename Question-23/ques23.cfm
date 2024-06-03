@@ -4,6 +4,7 @@
         <title>Employment Application</title>
         <link rel="stylesheet" href="./Assets/css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script src="./Script/ques23.js"></script> 
         <script src="./Script/script.js"></script>
     </head>
@@ -14,9 +15,7 @@
                     <img src="./Assets/wufooImage.PNG" alt="img">
                 </div>
                 <div class="secondMain" id="formContainer">
-                    <!---<form id="employmentForm" action="ques23.cfm" method="post">--->
                     <form id="employmentForm" action="ques23.cfm" method="post">
-
                         <div class="secondMainFt">
                             <div class="head">
                                 <h2>Employment Application</h2>
@@ -91,8 +90,8 @@
                                             <input type="text" id="textBoxThd" maxlength="4" name="yr">
                                             <p class="month">YYYY</p>
                                         </div>
-                                        <div class="dateImg">
-                                            <img src="./Assets/datePicker.png" alt="img">
+                                        <div class="dateImg" id="datepickerfrom">
+                                            <img src="./Assets/datePicker.png" alt="img" class="imgCalendar">
                                         </div>
                                     </div>
                                 </div>
@@ -222,10 +221,6 @@
                             <input type="submit" class="submit" name="submit" id="submitBtn" value="Submit">
                         </div>
                     </form>
-                   <!---  <cfif structKeyExists(form, "submit")>
-                        <cfset obj=createObject("component","Component.ques23" )>
-                        <cfset local.result=obj.formUpload(form.positionField,form.month,form.date,form.yr,form.urlLink,form.firstName,form.lastName,form.email,form.phoneFtField,form.phoneSndField,form.phoneThdField)>
-                    </cfif> --->
                     <p id="formDetails"></p>
                     <div class="lastCont">
                         <p class="lastContTxt">This site is protected by reCAPTCHA Enterprise and the Google

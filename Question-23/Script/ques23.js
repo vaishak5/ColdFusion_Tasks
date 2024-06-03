@@ -118,6 +118,11 @@ $(document).ready(function () {
             $(".errorTxt").show();
             return false;
         }
+        else{
+            $(".errorTxt").hide();
+        }
     return true;
     }
+    
 });
+
