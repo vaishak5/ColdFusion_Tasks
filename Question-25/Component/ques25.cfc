@@ -21,16 +21,16 @@
                 </cfquery>
             </cfif>
         </cfloop>
+        <cfreturn "Records are Inserted">
     </cffunction>
-
     <!---Get Count--->
-    <cffunction name="getCounts" access="public">
+    <cffunction name="getCounts" access="public" returntype="any">
         <cfargument name="text" required="true">
         <cfset local.wordCounts = {}>
         <cfset local.countWord = reMatch("[a-zA-Z]+", arguments.text)>
         <cfloop array="#local.countWord#" index="word">
-            <cfif len(trim(word)) GT 2 AND NOT isNumeric(word)>
-                <cfset word = lcase(trim(word))>
+            <cfif len(trim(word)) GTE 3 AND NOT isNumeric(word)>
+               <cfset word = lcase(trim(word))>
                 <cfif structKeyExists(local.wordCounts, word)>
                     <cfset local.wordCounts[word] = local.wordCounts[word] + 1>
                 <cfelse>
@@ -44,37 +44,38 @@
             <cfset arrayAppend(local.sortedWords,[local.wordCounts[word],word])>
         </cfloop>
         <cfquery datasource="DESKTOP-8VHOQ47">
-            delete from datasInsert
+            DELETE FROM datasInsert
         </cfquery>
         <cfloop array="#sortedWords#" index="word">
-            <cfquery name="insertWord" datasource="DESKTOP-8VHOQ47">
-                INSERT INTO datasInsert(word) 
-                VALUES (<cfqueryparam value="#word[2]#">)
+            <cfquery name="sorting" datasource="DESKTOP-8VHOQ47">
+                INSERT INTO datasInsert(word)
+                values(<cfqueryparam value="#word[2]#" CFSQLType="CF_SQL_VARCHAR">)
             </cfquery>
         </cfloop>
-        <cfquery name="forDisplay"  datasource="DESKTOP-8VHOQ47">
-            SELECT * FROM datasInsert 
-            ORDER BY len(word) desc
+       
+        <cfquery name="displaying" datasource="DESKTOP-8VHOQ47">
+            SELECT * FROM datasInsert ORDER BY len(word) DESC;
         </cfquery>
-        <cfset local.sample=[]>
-        <cfloop query="#forDisplay#">
-            <cfset session.mystruct[#word#] = structFind(local.wordCounts,#word#)>
+        <cfset local.smaple=[]>
+        <cfloop query="displaying">
+            <cfset session.struct[#word#] = structFind(local.wordCounts,#word#)>
         </cfloop>
-        <cfset local.data=structSort(session.mystruct,"numeric", "desc")>
-        <cfloop array="#data#" index="word">
-            <cfset arrayAppend(local.sample,[local.wordCounts[word],word])>
+        <cfset local.datas=structSort(session.struct, "numeric", "desc")>
+         
+        <cfloop array="#local.datas#" index="word">
+            <cfset arrayAppend(local.smaple,[local.wordCounts[word],word])>
         </cfloop>
-        <cfreturn "#local.sample#">
+        <cfreturn "#local.smaple#">
     </cffunction>
 
     <!---Word Color--->
-    <cffunction name="getWordColor" access="public">
+    <cffunction name="getWordColor" access="public" returntype="any">
         <cfargument name="text" required="true">
         <cfset local.wordCounts = {}>
         <cfset local.countWord = reMatch("[a-zA-Z]+", arguments.text)>
         <cfloop array="#local.countWord#" index="word">
-            <cfif len(trim(word)) GT 2 AND NOT isNumeric(word)>
-                <cfset word = lcase(trim(word))>
+            <cfif len(trim(word)) GTE 3 AND NOT isNumeric(word)>
+               <cfset word = lcase(trim(word))>
                 <cfif structKeyExists(local.wordCounts, word)>
                     <cfset local.wordCounts[word] = local.wordCounts[word] + 1>
                 <cfelse>
@@ -88,26 +89,40 @@
             <cfset arrayAppend(local.sortedWords,[local.wordCounts[word],word])>
         </cfloop>
         <cfquery datasource="DESKTOP-8VHOQ47">
-            delete from datasInsert
+            DELETE FROM datasInsert
         </cfquery>
         <cfloop array="#sortedWords#" index="word">
-            <cfquery name="insertWord" datasource="DESKTOP-8VHOQ47">
-                INSERT INTO datasInsert(word) 
-                VALUES (<cfqueryparam value="#word[2]#">)
+            <cfquery name="sorting" datasource="DESKTOP-8VHOQ47">
+                INSERT INTO datasInsert(word)
+                values(<cfqueryparam value="#word[2]#" CFSQLType="CF_SQL_VARCHAR">)
             </cfquery>
         </cfloop>
-        <cfquery name="forDisplay"  datasource="DESKTOP-8VHOQ47">
-            SELECT * FROM datasInsert 
-            ORDER BY len(word) desc
+       <cfquery name="displaying" datasource="DESKTOP-8VHOQ47">
+            SELECT * FROM datasInsert ORDER BY len(word) DESC;
         </cfquery>
-        <cfset local.sample=[]>
-        <cfloop query="#forDisplay#">
-            <cfset session.mystruct[#word#] = structFind(local.wordCounts,#word#)>
+        <cfset local.smaple=[]>
+        <cfloop query="displaying">
+            <cfset session.struct[#word#] = structFind(local.wordCounts,#word#)>
         </cfloop>
-        <cfset local.data=structSort(session.mystruct,"numeric", "desc")>
-        <cfloop array="#data#" index="word">
-            <cfset arrayAppend(local.sample,[local.wordCounts[word],word])>
+        <cfset local.datas=structSort(session.struct, "numeric", "desc")>
+         
+        <cfloop array="#local.datas#" index="word">
+            <cfset arrayAppend(local.smaple,[local.wordCounts[word],word])>
         </cfloop>
-        <cfset local.setColor="">
+        
+        <cfset local.setColor=[]>
+        <cfset local.fontSize=0>
+        <cfloop array="#local.smaple#" index="word">
+            <cfset Red = randRange(0, 255)>
+            <cfset Green = randRange(0, 255)>
+            <cfset Blue = randRange(0, 255)>
+            <cfset Color = "##"&formatBaseN(Red, '16')&formatBaseN(Green, '20')&formatBaseN(Blue, '22')>
+            <cfset fontSize = local.fontSize + (word[1]*5)>
+            <cfset arrayAppend(local.setColor, {word = word, fontSize = fontSize, color = Color})>
+        </cfloop>
+        <cfreturn local.setColor>
+      </cffunction>
+
+        
 </cfcomponent>
 

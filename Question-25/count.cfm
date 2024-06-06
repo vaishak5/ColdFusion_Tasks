@@ -11,23 +11,25 @@
     <input type="submit"  name="submit" value="Submit">
 </form>
 <cfoutput>
-    <cfif StructKeyExists(form, "submit")>
+<cfif StructKeyExists(form, "submit")>
         <cfset obj=createObject("component","Component.ques25")>
         <cfset local.result=obj.getCounts(form.text)>
-        <cfif arrayLen(local.result)>
+        
             <table>
                 <tr>
                     <th>Records</th>
                     <th>Counts</th>
+                    
                 </tr>
-                <cfloop array="#local.result#" index="i">
+                <cfloop array="#local.result#" index="word">
                     <tr>                
-                        <th>#i[2]#</th>
-                        <th>#i[1]#</th>
+                        <th>#word[2]#</th>
+                        <th>#word[1]#</th>                                    
+                        
                     </tr> 
                 </cfloop>
             </table>
-        </cfif>
+       
     </cfif>
 </cfoutput>
 </body>
