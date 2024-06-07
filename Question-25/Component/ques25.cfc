@@ -56,6 +56,8 @@
         <cfquery name="displaying" datasource="DESKTOP-8VHOQ47">
             SELECT * FROM datasInsert ORDER BY len(word) DESC;
         </cfquery>
+        <cfdump  var="#displaying#">
+        
         <cfset local.smaple=[]>
         <cfloop query="displaying">
             <cfset session.struct[#word#] = structFind(local.wordCounts,#word#)>
