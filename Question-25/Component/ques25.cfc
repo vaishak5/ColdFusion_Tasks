@@ -52,18 +52,16 @@
                 values(<cfqueryparam value="#word[2]#" CFSQLType="CF_SQL_VARCHAR">)
             </cfquery>
         </cfloop>
-       
-        <cfquery name="displaying" datasource="DESKTOP-8VHOQ47">
-            SELECT * FROM datasInsert ORDER BY len(word) DESC;
+       <cfquery name="displaying" datasource="DESKTOP-8VHOQ47">
+            SELECT * FROM datasInsert ORDER BY len(<cfqueryparam value="#arguments.text#" cfsqltype="CF_SQL_VARCHAR">) DESC;
         </cfquery>
-        <cfdump  var="#displaying#">
-        
         <cfset local.smaple=[]>
         <cfloop query="displaying">
             <cfset session.struct[#word#] = structFind(local.wordCounts,#word#)>
+             
         </cfloop>
         <cfset local.datas=structSort(session.struct, "numeric", "desc")>
-         
+
         <cfloop array="#local.datas#" index="word">
             <cfset arrayAppend(local.smaple,[local.wordCounts[word],word])>
         </cfloop>
@@ -85,6 +83,7 @@
                 </cfif>
             </cfif>
         </cfloop>
+        
         <cfset local.sortedData = structSort(local.wordCounts, "numeric", "desc")>
         <cfset local.sortedWords=[]>
         <cfloop array="#local.sortedData#" index="word">
@@ -100,7 +99,7 @@
             </cfquery>
         </cfloop>
        <cfquery name="displaying" datasource="DESKTOP-8VHOQ47">
-            SELECT * FROM datasInsert ORDER BY len(word) DESC;
+            SELECT * FROM datasInsert ORDER BY len(<cfqueryparam value="#arguments.text#" cfsqltype="CF_SQL_VARCHAR">) DESC;
         </cfquery>
         <cfset local.smaple=[]>
         <cfloop query="displaying">
@@ -124,7 +123,5 @@
         </cfloop>
         <cfreturn local.setColor>
       </cffunction>
-
-        
 </cfcomponent>
 
