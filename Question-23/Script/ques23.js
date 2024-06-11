@@ -1,10 +1,10 @@
 $(document).ready(function () {
     $("#submitBtn").on("click", function (event) {
         var firstField = $("#selectConts").val().trim();
-        var textBoxFt = $("#textBoxFt").val().trim();
-        var textBoxSnd = $("#textBoxSnd").val().trim();
+        var textBoxFt = $("#textBoxSnd").val().trim();
+        var textBoxSnd = $("#textBoxFt").val().trim();
         var textBoxThd = $("#textBoxThd").val().trim();
-        var year = textBoxFt + textBoxSnd + textBoxThd;
+        var year =  textBoxSnd + "/" + textBoxFt + "/" +  textBoxThd;
         var url = $("#urlCont").val().trim();
         var firstName = $("#firstname").val().trim();
         var lastName = $("#lastname").val().trim();
@@ -37,7 +37,33 @@ $(document).ready(function () {
         }
         return false;
     });
+    $(function () {
+		$("#textBoxThd").datepicker({
+			dateFormat: "yy-mm-dd",
+			showOn: "button",
+			buttonText: "<img src='./Assets/datePicker.png' alt='CalendarImg' class='calendarIcon'>",
+			buttonImageOnly: true,
+			buttonImage: "./Assets/datePicker.png",
+			onSelect: function (dateText, inst) {
+				var selectedDate = $(this).datepicker('getDate');
+				if (selectedDate != null) {
+					var month = selectedDate.getMonth() + 1;
+					var day = selectedDate.getDate();
+					var year = selectedDate.getFullYear();
+					$('.dateInputOne').eq(0).val(month);
+					$('.dateInputOne').eq(1).val(day);
+					$('.dateInputTwo').val(year);
+				}
+			}
+		});
+	});
+    $('.dateInputTwo').click(function (event) {
+		event.preventDefault();
+	});
 
+	$('.calendarIcon').click(function () {
+		$("#textBoxThd").datepicker("show");
+	});
     function validateForm() {
         var firstField = $("#selectConts").val().trim();
         var textBoxFt = $("#textBoxFt").val().trim();
@@ -52,10 +78,7 @@ $(document).ready(function () {
         var phoneSnd = $("#phoneSnd").val().trim();
         var phoneThd = $("#phoneThd").val().trim();
         var phone = phoneFt + phoneSnd + phoneThd;
-
-       
         $(".error").hide();
-
         var isValid = true;
         if(firstField===""){
             $("#fieldError").html("This field is required. Please enter a value.");
@@ -123,6 +146,7 @@ $(document).ready(function () {
         }
     return true;
     }
-    
 });
+
+
 

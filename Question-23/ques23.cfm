@@ -2,9 +2,13 @@
 <html lang="en">
     <head>
         <title>Employment Application</title>
+        <link rel="stylesheet" href="./Assets/css/jquery-ui.css">
         <link rel="stylesheet" href="./Assets/css/style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="./Script/Src/sourceFirst.js"></script>
+        <script src="./Script/Src/sourceSecond.js"></script>
+        <script src="./Script/Src/sourceThird.js"></script>
+        <script src="./Script/Src/jquery.min.js"></script>
+        <script src="./Script/Src/jquery-ui.min.js"></script>
         <script src="./Script/ques23.js"></script> 
         <script src="./Script/script.js"></script>
     </head>
@@ -69,7 +73,7 @@
                                 <div class="inputSet">
                                     <div class="inputConts">
                                         <div class="box">
-                                            <input type="text" id="textBoxFt" maxlength="2" name="month" onkeyup="moveCursor(this, 'textBoxSnd')">
+                                            <input type="text" class="field text dateInputOne" id="textBoxFt" maxlength="2" name="month" onkeyup="moveCursor(this, 'textBoxSnd')">
                                             <p class="month">MM</p>
                                         </div>
                                         <div class="symbols">
@@ -78,7 +82,7 @@
                                     </div>
                                     <div class="inputConts">
                                         <div class="box">
-                                            <input type="text" id="textBoxSnd" maxlength="2" name="date" onkeyup="moveCursor(this, 'textBoxThd')">
+                                            <input type="text" class="field text dateInputOne" id="textBoxSnd" maxlength="2" name="date" onkeyup="moveCursor(this, 'textBoxThd')">
                                             <p class="month">DD</p>
                                         </div>
                                         <div class="symbols">
@@ -87,11 +91,8 @@
                                     </div>
                                     <div class="inputContss">
                                         <div class="box">
-                                            <input type="text" id="textBoxThd" maxlength="4" name="yr">
+                                            <input type="text" class="field text dateInputTwo" id="textBoxThd" maxlength="4" name="yr">
                                             <p class="month">YYYY</p>
-                                        </div>
-                                        <div class="dateImg" id="datepickerfrom">
-                                            <img src="./Assets/datePicker.png" alt="img" class="imgCalendar">
                                         </div>
                                     </div>
                                 </div>

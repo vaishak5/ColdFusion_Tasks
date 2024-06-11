@@ -229,10 +229,6 @@ body{
 .error{
     color:red
 }
-.box{
-    display: flex;
-    flex-direction: column;
-}
 .textBox{
     width: 19px;
     height: 26px;
@@ -297,5 +293,11 @@ body{
 }
 .contact{
     border-top: 1px dotted #ddd;
+}
+.dateImg{
+    cursor: pointer;
+}
+.calendarIcon{
+    padding: left 10px;
 }
 

@@ -8,11 +8,12 @@
     <form action="ques19.cfm" method="post">
         <input type="submit" name="submit" value="Submit">
     </form>
+    <cfoutput>
     <cfif structKeyExists(form, "submit")>
         <cfset obj = createObject("component", "Component.ques19")>
-        <cfparam name="form.visitsCounter" default="0">
-        <cfset visitsCounter = obj.getIdentify(form.visitsCounter)>
+        <cfset local.result = obj.getIdentify()>
     </cfif>
-    <cfoutput><p>visitsCounter: #visitsCounter#</p></cfoutput>
+    <p>Visit Counter: #local.result#</p>
+    </cfoutput>
 </body>
 </html>
