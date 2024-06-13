@@ -12,8 +12,8 @@
     <cfif structKeyExists(form, "submit")>
         <cfset obj = createObject("component", "Component.ques19")>
         <cfset local.result = obj.getIdentify()>
+        <p>Visit Counter: #local.result#</p>
     </cfif>
-    <p>Visit Counter: #local.result#</p>
     </cfoutput>
 </body>
 </html>

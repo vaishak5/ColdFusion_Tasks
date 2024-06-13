@@ -2,9 +2,6 @@
     margin:0;
     padding:0;
 }
-.loginDetails img{
-    width: 150px;
-}
 .loginDetails{
     display: flex;
     justify-content: center;
@@ -16,7 +13,6 @@
     border: 1px solid black;
     padding: 20px;
     display: flex;
-    align-items: center;
     flex-direction: column;
     width: 20%;
     border-radius: 20px;
@@ -28,6 +24,7 @@
     padding: 5px 10px 5px 10px;
     color: #1b75d0;
     cursor:pointer;
+    
 }
 .cancelBtn{
     padding: 8px 13.4px;
@@ -37,6 +34,7 @@
     background: #1b75d0;
     border-radius: 10px;
     cursor:pointer;
+
 }
 input{
     padding:5px;
@@ -48,12 +46,22 @@ input{
     display: flex;
     flex-direction: column;
     gap: 15px;
+    align-items: center;
 }
-.homeLink{
-    margin-left: auto;
+.details{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
 }
-.homeLink a{
-    color:#1b75d0;
+h2{
+    text-align: center;
+}
+#role{
+    padding: 5px;
+}
+.error{
+    height: 15px;
+    font-size: 14px;
 }
 
 

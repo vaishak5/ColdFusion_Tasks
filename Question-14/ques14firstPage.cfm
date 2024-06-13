@@ -12,10 +12,10 @@
         <label for="descTxt">Enter some description about image:</label>
         <input type="text" name="descTxt" required><br><br>
         <label for="myfile">Select a file:</label>
-        <input type="file" name="myfile" accept="image/jpeg,image/png,image/gif" id="myfile"><br><br>
-        <input type="submit" name="submit" value="Submit" onclick="myFunction()">
+        <input type="file" name="myfile" accept="image/jpeg,image/png,image/webp,image/gif" id="myfile"><br><br>
+        <input type="button" name="submit" id="sub" value="Submit" onclick="myFunction()">
     </form>
-    <cfif structKeyExists(form, "submit")>
+    <cfif structKeyExists(form, "imgName")>
         <cfset obj = createObject("component", "Component.ques14")>
         <cfset result = obj.getIdentify(form.imgName, form.descTxt, form.myfile)>
     </cfif>
