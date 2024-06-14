@@ -1,0 +1,15 @@
+*{
+    margin:0;
+    padding:0;
+}
+.headerSet{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: bisque;
+    padding: 20px;
+}
+h2{
+    text-align: center;
+    margin-top: 10px;
+}

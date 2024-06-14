@@ -3,19 +3,22 @@ $(document).ready(function(){
         var username=$("#username").val().trim();
         var roleSet=$("#role").val().trim();
         var password=$("#password").val().trim();
-        var confirmPassword=$("#confirmPassword").val().trim();
         if(signValidate()){
             $.ajax({
                 type: "POST",
                 url: "./Component/signup.cfc?method=signupUpload",
-                datatype: "JSON",
+                datatype: "text",
                 data: {username:username,
                     roleSet: roleSet,
-                    password: password,
-                    confirmPassword: confirmPassword,
+                    password: password
                 },
                 success: function(response) {
-                    alert("Form submitted successfully!");
+                    if (response === "true") {
+                        alert("Form submitted successfully!");
+                        window.location.href = "./loginPage.cfm";
+                    } else if (response === "false") { 
+                        alert("Username already exists!");
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
@@ -25,11 +28,39 @@ $(document).ready(function(){
         }
         return false;
     });
-});
 
+    $("#loginBtn").on("click", function () {
+        var username=$("#username").val().trim();
+        var password=$("#password").val().trim();
+        if(username==""|| password==""){
+            alert("Invalid username or Password!");
+        }
+        else{
+            $.ajax({
+                type: "POST",
+                url: "./Component/signup.cfc?method=checkLogin",
+                datatype: "text",
+                data: {username:username,
+                    password: password
+                },
+                success: function(response) {
+                    if (response === "true") {
+                        alert("Login successfull");
+                        window.location.href = "./homePage.cfm";
+                    } else if (response === "false") { 
+                        alert("No user Found!");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    alert("An error occurred while submitting the form. Please try again.");
+                }
+            });
+        }
+    });
+});
 function signValidate(){
     var username=$("#username").val().trim();
-    
     var roleSet=$("#role").val().trim();
     var password=$("#password").val().trim();
     var confirmPassword=$("#confirmPassword").val().trim();
@@ -38,7 +69,6 @@ function signValidate(){
     if(username=="" && roleSet=="" && password=="" && confirmPassword==""){
         $("#usernameError").html("This field is required. Please enter a value.").css("color","red");
         $("#usernameError").show();
-        
         $("#roleError").html("This field is required. Please enter a value.").css("color","red");
         $("#roleError").show();
         $("#passwordError").html("This field is required. Please enter a value.").css("color","red");
@@ -51,8 +81,7 @@ function signValidate(){
             $("#usernameError").html("Please enter a valid Username.").css("color","red");
             $("#usernameError").show();
             isValid = false;
-        } 
-        
+        }
         if(roleSet===""){
             $("#roleError").html("This field is required. Please enter a value.").css("color","red");
             $("#roleError").show();
@@ -63,9 +92,9 @@ function signValidate(){
             $("#passwordError").show();
             isValid = false;
         } else if (!isValidPassword(password)) {
-            $("#passwordError").html("Password must contain at least 8 characters").css("color","red");
+            $("#passwordError").html("Password must contain all kind of formats!").css("color","red");
             $("#passwordError").show();
-            
+            isValid = false;
         }
         if(confirmPassword===""){
             $("#confirmError").html("This field is required. Please enter a value.").css("color","red");
@@ -74,10 +103,9 @@ function signValidate(){
         } else if (password != confirmPassword){
             $("#confirmError").html("Please enter correct password").css("color","red");
             $("#confirmError").show();
-            
+            isValid = false;
         }
     }
-    
     if(isValid){
         return true;
     }
@@ -87,4 +115,3 @@ function isValidPassword(password) {
     var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     return passwordRegex.test(password);
 }
-

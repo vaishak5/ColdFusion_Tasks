@@ -4,13 +4,12 @@
     <title>SignUp Page</title>
     <link rel="stylesheet" href="./style/signupPage.css">
     <link rel="stylesheet" href="./style/jquery-ui.css">
-    <script src="./script/src/sourceFirst.js"></script>
-    <script src="./script/src/sourceSecond.js"></script>
-    <script src="./script/src/sourceThird.js"></script>
-    <script src="./script/src/jquery.min.js"></script>
-    <script src="./script/src/jquery-ui.min.js"></script>
-    <script src="./script/src/signup.js"></script>
-
+    <script src="./script/sourceFirst.js"></script>
+    <script src="./script/sourceSecond.js"></script>
+    <script src="./script/sourceThird.js"></script>
+    <script src="./script/jquery.min.js"></script>
+    <script src="./script/jquery-ui.min.js"></script>
+    <script src="./script/signup.js"></script>
 </head>
 <body>
     <div class="loginDetails">
@@ -22,7 +21,8 @@
                 <label for="role">Select a role</label>
                 <select name="role" id="role">
                     <option value selected="selected"></option>
-                    <option value="admin">Admin or Editor</option>
+                    <option value="admin">Admin</option>
+                    <option value="editor">Editor</option>
                     <option value="user">User</option>
                 </select>
                 <span id="roleError" class="error"></span>
@@ -33,12 +33,11 @@
                 <div class="btnCont">
                     <input type="button" class="submitBtn" id="submitClick" value="Submit">
                     <input type="button" class="cancelBtn" value="Cancel">
-                 </div>
+                </div>
             </form>
             <div class="signup">
                 <p class="notTxt">Already have an account? <a href="loginPage.cfm">Login Here</a></p>
             </div>
-       
         </div>
     </div>
 </body>
