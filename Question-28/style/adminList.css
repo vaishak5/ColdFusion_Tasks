@@ -2,10 +2,6 @@
     margin:0;
     padding:0;
 }
-h2{
-    text-align: center;
-    padding: 10px 0px 10px 0px;
-}
 .header{
     display: flex;
     justify-content: space-between;
@@ -22,13 +18,21 @@ h2{
     align-items: center;
     gap: 50px;
 }
-.adminFeat, .features{
+.listDetails{
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    gap: 150px;
+    padding: 10px;
 }
 .siteName{
     font-size: 25px;
     font-weight: 600;
+}
+.addLink{
+    display: flex;
+    justify-content: end;
+}
+.addLink a{
+    color:blueviolet;
 }
 

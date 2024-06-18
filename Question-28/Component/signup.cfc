@@ -37,4 +37,18 @@
             <cfreturn false>
         </cfif>
     </cffunction>
+
+    <!---Add Page--->
+    <cffunction  name="addDetails" access="remote">
+        <cfargument  name="page" required="true">
+        <cfargument  name="desc" required="true">
+        <cfquery name="addItems" datasource="DESKTOP-8VHOQ47">
+            INSERT INTO addDatas (pageName, pageDesc)
+                VALUES (
+                    <cfqueryparam value="#arguments.page#" cfsqltype="CF_SQL_VARCHAR">,
+                    <cfqueryparam value="#arguments.desc#" cfsqltype="CF_SQL_VARCHAR">,
+                    
+                )
+        </cfquery>
+    </cffunction>
 </cfcomponent>
