@@ -1,0 +1,38 @@
+*{
+    margin:0;
+    padding:0;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: darkgray;
+    color:white;
+}
+.header a{
+    color:white;
+}
+.headerFirst, .headerSecond{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.listDetails{
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    padding: 10px;
+}
+.siteName{
+    font-size: 25px;
+    font-weight: 600;
+}
+.addLink{
+    display: flex;
+    justify-content: end;
+}
+.addLink a{
+    color:blueviolet;
+}
+
