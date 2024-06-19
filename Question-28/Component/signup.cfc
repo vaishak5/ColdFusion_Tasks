@@ -39,16 +39,25 @@
     </cffunction>
 
     <!---Add Page--->
-    <cffunction  name="addDetails" access="remote">
-        <cfargument  name="page" required="true">
-        <cfargument  name="desc" required="true">
+    <cffunction  name="addDetails" access="remote" returnFormat="plain">
+        <cfargument  name="pageName" required="true">
+        <cfargument  name="pageDesc" required="true">
+        <cfquery name="checkDatas" datasource="DESKTOP-8VHOQ47">
+            SELECT 1 FROM addDataz 
+            WHERE pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="CF_SQL_VARCHAR">
+        </cfquery>
+        <cfif checkDatas.recordCount>
+            <cfreturn false>
+        <cfelse>
         <cfquery name="addItems" datasource="DESKTOP-8VHOQ47">
-            INSERT INTO addDatas (pageName, pageDesc)
+            INSERT INTO addDataz (pageName, pageDesc)
                 VALUES (
-                    <cfqueryparam value="#arguments.page#" cfsqltype="CF_SQL_VARCHAR">,
-                    <cfqueryparam value="#arguments.desc#" cfsqltype="CF_SQL_VARCHAR">,
+                    <cfqueryparam value="#arguments.pageName#" cfsqltype="CF_SQL_VARCHAR">,
+                    <cfqueryparam value="#arguments.pageDesc#" cfsqltype="CF_SQL_VARCHAR">
                     
                 )
         </cfquery>
+         <cfreturn true>
+        </cfif>
     </cffunction>
 </cfcomponent>

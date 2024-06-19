@@ -6,14 +6,14 @@
 </head>
 <body>
     <h2>User Input Page</h2>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="ques14firstPage.cfm" method="post" enctype="multipart/form-data">
         <label for="imgName">Enter image name:</label>
-        <input type="text" name="imgName" required><br><br>
+        <input type="text" id="imgName" name="imgName" required><br><br>
         <label for="descTxt">Enter some description about image:</label>
-        <input type="text" name="descTxt" required><br><br>
+        <input type="text" id="descTxt" name="descTxt" required><br><br>
         <label for="myfile">Select a file:</label>
         <input type="file" name="myfile" accept="image/jpeg,image/png,image/webp,image/gif" id="myfile"><br><br>
-        <input type="button" name="submit" id="sub" value="Submit" onclick="myFunction()">
+        <input type="submit" name="submit" id="sub" onclick="myFunction()" value="Submit">
     </form>
     <cfif structKeyExists(form, "imgName")>
         <cfset obj = createObject("component", "Component.ques14")>

@@ -6,33 +6,65 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     background: darkgray;
     color:white;
 }
 .header a{
     color:white;
 }
-.headerFirst, .headerSecond{
+.headerSecond{
     display: flex;
     align-items: center;
     gap: 50px;
+    
 }
-.listDetails{
+.headerSecond p{
+    margin-bottom:0px;
+}
+
+.style{
     display: flex;
     justify-content: center;
-    gap: 150px;
+    font-size: 20px;
     padding: 10px;
+}
+.styles{
+    display: flex;
+    gap: 100px;
+
 }
 .siteName{
     font-size: 25px;
     font-weight: 600;
+    margin-bottom:0px;
 }
 .addLink{
     display: flex;
-    justify-content: end;
+    justify-content: center;
 }
 .addLink a{
-    color:blueviolet;
+    color: blueviolet;
+    border: 1px solid blueviolet;
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
 }
-
+.tableStyle{
+    padding: 30px 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.titleValues{
+    width: 150px !important;
+}
+.AcrionValues{
+    width: 250px !important;
+}
+.headerFirst{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}

@@ -58,6 +58,36 @@ $(document).ready(function(){
             });
         }
     });
+    $("#adding").on("click", function (){
+        var pageName=$("#page").val().trim();
+        var pageDesc=$("#desc").val().trim();
+        if(pageName==""|| pageDesc==""){
+            alert("Plz enter any values in the fields!!");
+        }
+        else{
+            $.ajax({
+                type:"POST",
+                url:"./Component/signup.cfc?method=addDetails",
+                datatype: "text",
+                data: {pageName:pageName,
+                    pageDesc: pageDesc
+                },
+                success: function(response) {
+                    if (response === "true") {
+                        alert("Datas added!!");
+                    } else if (response === "false") { 
+                        alert("Datas already entered");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    alert("An error occurred while submitting the form. Please try again.");
+                }
+
+            });
+        }
+
+    });
 });
 function signValidate(){
     var username=$("#username").val().trim();

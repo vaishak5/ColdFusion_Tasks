@@ -4,6 +4,13 @@
     <title>Add Page</title>
     <link rel="stylesheet" href="./style/addDatas.css">
     <link rel="stylesheet" href="./style/adminList.css">
+    <script src="./script/sourceFirst.js"></script>
+    <script src="./script/sourceSecond.js"></script>
+    <script src="./script/sourceThird.js"></script>
+    <script src="./script/jquery.min.js"></script>
+    <script src="./script/jquery-ui.min.js"></script>
+    <script src="./script/signup.js"></script>
+    <script src="./script/cancel.js"></script>
 </head>
 <body>
     <div class="header">
@@ -19,10 +26,10 @@
     </div>
     <h2>Add Datas Page</h2>
     <div class="datasSet">
-        <form id="datas">
+        <form id="myForm">
             <div class="dataFt">
                 <label for="page">Title</label>
-                <input type="text" name="page"><br><br>
+                <input type="text" name="page" id="page"><br><br>
             </div>
             <div class="dataSnd">
                 <label for="desc">Description</label>
@@ -30,10 +37,9 @@
             </div>
             <div class="btnSet">
                 <input type="button" value="ADD" class="btns" id="adding">
-                <input type="button" value="CANCEL" class="btns">
+                <input type="button" value="CANCEL" class="btns" onclick="myFunction()">
             </div>
         </form>
     </div>
-    
 </body>
 </html>
