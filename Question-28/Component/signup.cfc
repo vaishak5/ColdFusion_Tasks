@@ -60,4 +60,16 @@
          <cfreturn true>
         </cfif>
     </cffunction>
+    <!---Delete Datas--->
+    <cffunction name="deleteDatas" access="remote" returnFormat="plain">
+        <cfargument  name="id" required="true">
+        <cfquery name="deleteQuery" datasource="DESKTOP-8VHOQ47">
+            DELETE FROM addDataz
+            WHERE pageId = <cfqueryparam value="#arguments.id#" cfsqltype="CF_SQL_VARCHAR">
+        </cfquery>
+        
+        <!--- Return success message or indication --->
+        
+        
+    </cffunction>
 </cfcomponent>

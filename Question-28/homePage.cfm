@@ -31,7 +31,7 @@
         <div class="header">
             <div class="headerFirst">
                 <p class="siteName">TECHFLICK</p>
-                <a href="userList.cfm">View List</a>
+                <a href="adminList.cfm">View List</a>
             </div>
             <div class="headerSecond">
                 <p>Hello User!!!</p>

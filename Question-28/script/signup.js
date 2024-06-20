@@ -88,6 +88,30 @@ $(document).ready(function(){
         }
 
     });
+    $("#deleteBtn").on("click", function (){
+        var row = $(this).closest("tr");
+        var pageId = $(this).data("id");
+        if (confirm("Are you sure you want to delete this record?")) {
+            $.ajax({
+                type:"POST",
+                url: './Component/signup.cfc?method=deletePage',
+                dataType: "text",
+                data: { pageId: pageId },
+                success: function(response) {
+                    if (response.success) {
+                        row.remove();
+                        alert("Record deleted successfully.");
+                    } else {
+                        alert("Failed to delete record.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Error deleting record.");
+                    console.error(xhr, status, error);
+                }
+            });
+        }
+    });
 });
 function signValidate(){
     var username=$("#username").val().trim();
