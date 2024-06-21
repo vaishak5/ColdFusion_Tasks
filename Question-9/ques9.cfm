@@ -11,16 +11,18 @@
       </cfif>
       <form action="ques9.cfm" method="post">
             <label for="name">Enter any Key:</label>
-            <input type="text" name="key" required><br><br>
+            <input type="text" id="name" name="key" required><br><br>
             <label for="value">Enter any Value:</label>
-            <input type="text" name="value" required><br><br>
+            <input type="text" id="value" name="value" required><br><br>
             <input type="submit"  name="submit" value="Submit" ><br>
         </form><br>
         <cfif structKeyExists(form, "submit")>
-            <cfinvoke component="Component.ques9" method="getIdentify">
+            <!---<cfinvoke component="Component.ques9" method="getIdentify">
                 <cfinvokeargument  name="key" value="#form.key#">
                 <cfinvokeargument  name="value" value="#form.value#">
-            </cfinvoke>
+            </cfinvoke>--->
+            <cfset obj=createObject("component","Component.ques9")>
+            <cfset local.result=obj.getIdentify(form.key,form.value)>
             <cfdump  var="#session.struct#">
       </cfif>
    </body>

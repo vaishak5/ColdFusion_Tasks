@@ -1,3 +1,4 @@
+
 <cfcomponent>
     <!---Sign In--->
     <cffunction  name="signupUpload" access="remote" returnFormat="plain">
@@ -60,16 +61,30 @@
          <cfreturn true>
         </cfif>
     </cffunction>
-    <!---Delete Datas--->
-    <cffunction name="deleteDatas" access="remote" returnFormat="plain">
-        <cfargument  name="id" required="true">
-        <cfquery name="deleteQuery" datasource="DESKTOP-8VHOQ47">
-            DELETE FROM addDataz
-            WHERE pageId = <cfqueryparam value="#arguments.id#" cfsqltype="CF_SQL_VARCHAR">
+   
+    <cffunction name="datas" access="remote" returnFormat="plain">
+        <cfquery name="getDatas" datasource="DESKTOP-8VHOQ47">
+            SELECT pageId, pageName, pageDesc FROM addDataz
         </cfquery>
-        
-        <!--- Return success message or indication --->
-        
-        
+    
+    </cffunction>
+
+     <!---Delete Datas--->
+    <cffunction name="deleteDatas" access="remote" returnFormat="plain">
+        <cfargument name="pageId" required="true">
+
+        <cfquery name="deleteQuery" datasource="DESKTOP-8VHOQ47">
+            SELECT pageId FROM addDataz 
+            WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="CF_SQL_VARCHAR">
+        </cfquery>
+        <cfif deleteQuery.recordCount>
+            <cfquery name="deleteItems" datasource="DESKTOP-8VHOQ47">
+                delete from addDataz
+                WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="CF_SQL_VARCHAR">
+            </cfquery>
+            <cfreturn true>
+        <cfelse>
+            <cfreturn false>
+        </cfif>
     </cffunction>
 </cfcomponent>

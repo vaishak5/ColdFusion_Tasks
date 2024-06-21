@@ -7,7 +7,7 @@
     <h2>Data from table</h2>
     <form action="ques12.cfm" method="post">
         <label for="num">Enter the input value:</label>
-        <input type="text" name="num" required><br><br>
+        <input type="text" id="num" name="num" required><br><br>
         <input type="submit" name="submit" value="Submit"><br>
     </form>
     <cfif structKeyExists(form, "submit")>

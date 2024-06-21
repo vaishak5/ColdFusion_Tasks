@@ -2,7 +2,7 @@
     <cffunction name="getIdentify" returntype="string">
         <cfargument name="num" type="numeric" required="true">
         <cfquery name="nameList" datasource="DESKTOP-8VHOQ47">
-            SELECT * FROM nameList
+            SELECT * FROM name_List
         </cfquery>
         <cfset firstName = "">
         <cfif num LTE nameList.recordCount AND num GT 0>

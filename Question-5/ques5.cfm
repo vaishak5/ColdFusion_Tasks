@@ -7,9 +7,9 @@
     <h2>Days Identifier</h2>
     <form action="ques5.cfm" method="post">
         <label for="userDOB">User's DOB:</label>
-        <input type="text" name="userDOB" required><br><br>
+        <input type="text" id="userDOB" name="userDOB" required><br><br>
         <label for="momDOB">Mother's DOB:</label>
-        <input type="text" name="momDOB" required><br><br>
+        <input type="text" id="momDOB" name="momDOB" required><br><br>
         <input type="submit" name="submit" value="Submit">
     </form>
     <cfif structKeyExists(form, "submit") and structKeyExists(form, "userDOB") and structKeyExists(form, "momDOB")>
