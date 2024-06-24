@@ -11,9 +11,9 @@
     <cfelse>
         <form method="post" action="login.cfm">
             <label for="email">Enter the user name:</label>
-            <input type="email" name="email" required><br><br>
+            <input type="email" name="email" id="email" required><br><br>
             <label for="password">Enter the password:</label>
-            <input type="password" name="password" required><br><br>
+            <input type="password" name="password" id="password" required><br><br>
             <input type="submit" name="submit" value="Submit">
         </form>
         <cfif structKeyExists(form, "submit")>
@@ -24,7 +24,7 @@
                 <cflocation url="welcome.cfm" addtoken="false">
             <cfelse>
                 <cfoutput>
-                <h2>Error Occured:#local.result#</h2>
+                <h2>Error Occured:</h2>
                 </cfoutput>
             </cfif>
         </cfif>

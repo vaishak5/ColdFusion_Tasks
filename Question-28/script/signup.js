@@ -74,10 +74,10 @@ $(document).ready(function(){
                     pageDesc: pageDesc
                 },
                 success: function(response) {
-                    if (response === "true") {
+                    if (response ) {
                         alert("Datas added!!");
                         window.location.reload();
-                    } else if (response === "false") { 
+                    } else if (response ) { 
                         alert("Datas already entered");
                         window.location.reload();
                     }

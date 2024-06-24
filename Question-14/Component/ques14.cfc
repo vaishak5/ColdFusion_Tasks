@@ -4,7 +4,7 @@
         <cfargument  name="descTxt">
         <cfargument  name="myfile">
         <cfset local.imgPath = expandPath("./Assets/")>
-        <cfset img = "">
+        <cfset local.img = "">
         <cffile action="upload" destination="#local.imgPath#" nameconflict="makeunique">
         <cfset local.img = cffile.serverFile>
         <cfquery name="imageSet" datasource="DESKTOP-8VHOQ47">

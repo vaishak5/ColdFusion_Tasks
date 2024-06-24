@@ -37,7 +37,6 @@ $(document).ready(function() {
             
             success: function(response) {
                 if (response == "success") {
-                    console.log("response.message");
                     alert('Email id Subscribed Successfully');
                 }
             },

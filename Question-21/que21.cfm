@@ -7,9 +7,9 @@
     <h2>Birthday wishes page</h2>
     <form action="" method="post" enctype="multipart/form-data">
         <label for="babyName">Birthday Baby Name:</label>
-        <input type="text" name="babyName" required><br><br>
+        <input type="text" name="babyName" id="babyName" required><br><br>
         <label for="emailId">User Email Id:</label>
-        <input type="text" name="emailId" required><br><br>
+        <input type="text" name="emailId" id="emailId" required><br><br>
         <label for="bdayWish">Birthday wishes:</label>
         <textarea name="bdayWish" id="bdayWish" rows="4" cols="50"></textarea><br><br>
         <label for="greetingImg">Greeting Image</label>

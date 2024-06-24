@@ -13,7 +13,6 @@
         #obj.ImageName#<BR>
         #obj.DescTxt#<BR>
         <img class="imgSizee" src="./Assets/#obj.Images#">
-        
     </cfoutput>
 </body>
 </html>

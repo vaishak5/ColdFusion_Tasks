@@ -1,11 +1,11 @@
 <cfcomponent>
-    <cffunction name="getIdentify">
-        <cfargument name="captcha">
-        <cfset  result = {}>
+    <cffunction name="getIdentify" returntype="string">
+        <cfargument name="captcha" required="true">
+        <cfset result = "">
         <cfif arguments.captcha EQ session.captchaInput>
-            <cfset result = "Email Address successfully subscribe our newsletter">
+            <cfset result = "Email Address successfully subscribed to our newsletter">
         <cfelse>
-            <cfset result = "Enter the Same Captcha">
+            <cfset result = "Please enter the correct captcha">
         </cfif>
         <cfreturn result>
     </cffunction>

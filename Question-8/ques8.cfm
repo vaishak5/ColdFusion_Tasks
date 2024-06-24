@@ -14,10 +14,6 @@
         <input type="submit" name="submit" value="Submit"><br><br>
     </form>
     <cfif StructKeyExists(form,"submit")>
-        <!---<cfinvoke component="Component.ques8" method="getIdentify">
-            <cfinvokeargument name="key" value="#form.key#">
-            <cfinvokeargument name="value" value="#form.value#">
-        </cfinvoke>--->
         <cfset obj=createObject("component","Component.ques8")>
         <cfset local.result=obj.getIdentify(form.key,form.value)>
         <cfdump var="#session.struct#">

@@ -19,7 +19,6 @@
     <cffunction name="uploadMail" access="remote" returnType="string">
         <cfargument name="name" required="true">
         <cfargument name="email" required="true">
-            <cfdump  var="#arguments#" abort>
             <cfquery name = "emailUpload" datasource="DESKTOP-8VHOQ47">
                 INSERT INTO subscriberForm (fname, email)
                 VALUES (
@@ -28,7 +27,6 @@
                 )
             </cfquery>
             <cfset local.result = "success">
-            <cfdump  var="#local.result#" abort>
             <cfreturn "success"> 
     </cffunction>
 </cfcomponent>

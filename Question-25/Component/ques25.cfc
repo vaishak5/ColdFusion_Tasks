@@ -42,6 +42,7 @@
         <cfset local.sortedWords=[]>
         <cfloop array="#local.sortedData#" index="word">
             <cfset arrayAppend(local.sortedWords,[local.wordCounts[word],word])>
+            
         </cfloop>
         <cfquery datasource="DESKTOP-8VHOQ47">
             DELETE FROM datasInsert
@@ -58,14 +59,13 @@
         <cfset local.smaple=[]>
         <cfloop query="displaying">
             <cfset session.struct[#word#] = structFind(local.wordCounts,#word#)>
-             
         </cfloop>
         <cfset local.datas=structSort(session.struct, "numeric", "desc")>
-
         <cfloop array="#local.datas#" index="word">
             <cfset arrayAppend(local.smaple,[local.wordCounts[word],word])>
         </cfloop>
         <cfreturn "#local.smaple#">
+        
     </cffunction>
 
     <!---Word Color--->

@@ -15,7 +15,6 @@
     <div class="loginDetails">
         <div class="loginContents">
             <div class="homeLink">
-                <a href="#">Home Page</a>
             </div>
             <h2>Login</h2>
             <img src="./assets/loginLogo.png" alt="img">

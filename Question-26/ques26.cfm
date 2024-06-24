@@ -7,7 +7,7 @@
     <h2>Read Text File</h2>
     <form action="ques26.cfm" method="post" enctype="multipart/form-data">
         <label for="myFile">Select a File:</label>
-        <input type="file" name="myFile"><br><br>
+        <input type="file" name="myFile" id="myFile"><br><br>
         <input type="submit" name="submit" value="Submit">
     </form>
     <cfoutput>
