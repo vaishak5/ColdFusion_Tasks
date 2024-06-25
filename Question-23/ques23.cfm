@@ -156,7 +156,6 @@
                                         <div class="boxx">
                                             <input type="text" id="firstname" name="firstName">
                                             <label for="firstName">First</label>
-                                        
                                         </div>
                                     </div>
                                     <div class="inputConts">

@@ -1,3 +1,4 @@
+<cfoutput>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +7,13 @@
     <link rel="stylesheet" href="./style/bootstrap.min.css">
 </head>
 <body>
+    <cfset local.obj = createObject("component", "Component.signup")>
+    <cfset local.userDisplay = local.obj.userPageDetails()>
     <div class="header">
         <div class="headerFirst">
             <p class="siteName">TECHFLICK</p>
             <a href="homePage.cfm">Home Page</a>
-            <a href="userList.cfm">View List</a>
+            <a href="adminList.cfm">View List</a>
         </div>
         <div class="headerSecond">
             <p>Hello User!!!</p>
@@ -26,18 +29,15 @@
                 </tr>
             </thead>
             <tbody>
-                <cfquery name="getData" datasource="DESKTOP-8VHOQ47">
-                    SELECT pageName, pageDesc FROM addDataz WHERE pageId = <cfqueryparam value="#url.id#" cfsqltype="cf_sql_integer">
-                </cfquery>
-                <cfoutput query="getData">
-                    <tr class="tableRow">
-                        <td class="titleValues">#getData.pageName#</td>
-                        <td class="descValues">#getData.pageDesc#</td>
+                <cfloop query="local.userDisplay">
+                    <tr class="tableRow" id="#url.id#">
+                        <td class="titleValues">#local.userDisplay.pageName#</td>
+                        <td class="descValues">#local.userDisplay.pageDesc#</td>
                     </tr>
-                </cfoutput>
+                </cfloop>
             </tbody>
-            
         </table>
     </div>
 </body>
 </html>
+</cfoutput>

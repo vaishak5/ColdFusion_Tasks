@@ -1,3 +1,4 @@
+<cfoutput>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -12,6 +13,8 @@
       <script src="./script/signup.js"></script>
    </head>
    <body>
+      <cfset local.obj = createObject("component", "Component.signup")>
+      <cfset local.displayData = local.obj.getPagesDetails()>
       <cfif session.role EQ "admin" OR session.role EQ "editor">
       <div class="header">
          <div class="headerFirst">
@@ -29,7 +32,7 @@
                <tr>
                   <th class="titleValues" scope="col-3">
                      <h5><b>Title</b></h5>
-                  </th>
+                  </th> 
                   <th class="titleValues" scope="col">
                      <h5><b>Description</b></h5>
                   </th>
@@ -39,19 +42,16 @@
                </tr>
             </thead>
             <tbody>
-               <cfquery name="getDatas" datasource="DESKTOP-8VHOQ47">
-                  SELECT pageId, pageName, pageDesc FROM addDataz
-               </cfquery>
-               <cfoutput query="getDatas">
-                  <tr class="tableRow">
-                     <th class="titleValues" scope="col-3">#getDatas.pageName#</th>
-                     <th class="descValues" scope="col">#getDatas.pageDesc#</th>
-                     <th class="acrionValues" scope="col">
-                        <a href="editDatas.cfm?id=#getDatas.currentRow#">Edit</a> 
-                        <!---<a href="./Component/signup.cfc?method=deleteDatas&id=#getDatas.pageId#">Delete</a>--->
-                        <button type="submit" class="btn btn-primary delBtn" id="deleting" data-id="#getDatas.pageId#">Delete</button>
+               <cfloop query="local.displayData">
+                  <tr class="tableRow" id="#local.displayData.pageId#">
+                     <td class="titleValues">#local.displayData.pageName#</td>
+                     <td class="descValues">#local.displayData.pageDesc#</td>
+                     <td class="actionValues">
+                     <a href="editDatas.cfm?id=#local.displayData.pageId#">Edit</a>
+                     <button type="submit" class="btn btn-primary deleting delBtn"  data-id="#local.displayData.pageId#">Delete</button>                   
+                     </td>
                   </tr>
-               </cfoutput>
+               </cfloop>
             </tbody>
          </table>
       </div>
@@ -79,16 +79,14 @@
             </tr>
          </thead>
          <tbody>
-            <cfquery name="getDatas" datasource="DESKTOP-8VHOQ47">
-               SELECT pageId, pageName FROM addDataz
-            </cfquery>
-            <cfoutput query="getDatas">
-               <tr class="tableRows">
-                  <th class="userValues" scope="col"><a href="userviewList.cfm?id=#getDatas.pageId#">#getDatas.pageName#</a></th>
+            <cfloop query="local.displayData">
+               <tr class="tableRows" id="#local.displayData.pageId#">
+                  <th class="userValues" scope="col"><a href="userviewList.cfm?id=#local.displayData.pageId#">#local.displayData.pageName#</a></th>
                </tr>
-            </cfoutput>
+            </cfloop>
          </tbody>
         </table>
       </cfif>
    </body>
 </html>
+</cfoutput>

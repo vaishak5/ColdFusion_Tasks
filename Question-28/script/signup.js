@@ -14,10 +14,10 @@ $(document).ready(function(){
                     password: password
                 },
                 success: function(response) {
-                    if (response === "true") {
+                    if (response === true) {
                         alert("Form submitted successfully!");
                         window.location.href = "./loginPage.cfm";
-                    } else if (response === "false") { 
+                    } else if (response === false) { 
                         alert("Username already exists!");
                     }
                 },
@@ -45,10 +45,10 @@ $(document).ready(function(){
                     password: password
                 },
                 success: function(response) {
-                    if (response === "true") {
-                        alert("Login successfull");
+                    if (response) {
+                        alert("Login Successfully!!!")
                         window.location.href = "./homePage.cfm";
-                    } else if (response === "false") { 
+                    } else if (response === false) { 
                         alert("No user Found!");
                     }
                 },
@@ -74,10 +74,10 @@ $(document).ready(function(){
                     pageDesc: pageDesc
                 },
                 success: function(response) {
-                    if (response ) {
+                    if (response === "true") {
                         alert("Datas added!!");
                         window.location.reload();
-                    } else if (response ) { 
+                    } else if (response === "false" ) { 
                         alert("Datas already entered");
                         window.location.reload();
                     }
@@ -91,29 +91,31 @@ $(document).ready(function(){
         }
 
     });
-    $("#deleting").on("click", function () {
-        var row = $(this).closest("tr");
-        var pageId = $(this).data("id");
-        if (confirm("Are you sure you want to delete this record?")) {
+    $(".deleting").click( function () {
+        var pageId = $(this).attr("data-id");
+        var _this=$(this);
+       if (!confirm("Are you sure you want to delete this record?")) {
+            return;
+        }
+        else{
             $.ajax({
                 type: "POST",
                 url: './Component/signup.cfc?method=deleteDatas',
                 dataType: "text",
                 data: { pageId: pageId },
                 success: function(response) {
-                    if (response) {
-                        row.remove();
-                        alert("Record deleted successfully.");
-                        window.location.reload();
-                    } 
+                        alert("Datas are deleted!!!");
+                        $(_this).parents("tr").remove();
+    
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
                     alert("Error deleting record.");
-                    window.location.reload();
+                    
                 }
             });
         }
+        
     });
     
 });

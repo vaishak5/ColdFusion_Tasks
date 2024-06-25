@@ -48,7 +48,7 @@
             WHERE pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="CF_SQL_VARCHAR">
         </cfquery>
         <cfif checkDatas.recordCount>
-            <cfreturn false>
+            <cfreturn "false">
         <cfelse>
         <cfquery name="addItems" datasource="DESKTOP-8VHOQ47">
             INSERT INTO addDataz (pageName, pageDesc)
@@ -58,21 +58,31 @@
                     
                 )
         </cfquery>
-         <cfreturn true>
+         <cfreturn "true">
         </cfif>
     </cffunction>
-   
-    <cffunction name="datas" access="remote" returnFormat="plain">
-        <cfquery name="getDatas" datasource="DESKTOP-8VHOQ47">
-            SELECT pageId, pageName, pageDesc FROM addDataz
+
+    <!---Get Page Datas(ADMIN)--->
+
+   <cffunction name="getPagesDetails" access="remote" returntype="any">
+        <cfquery name="displayDatas">
+            SELECT pageId,pageName,pageDesc 
+            FROM addDataz
         </cfquery>
-    
+        <cfreturn displayDatas>
+    </cffunction>
+
+    <!---User Page Details--->
+    <cffunction name="userPageDetails" access="remote" returntype="any">
+        <cfquery name="displayUserDatas">
+            SELECT pageName, pageDesc FROM addDataz WHERE pageId = <cfqueryparam value="#url.id#" cfsqltype="cf_sql_integer">
+        </cfquery>
+        <cfreturn displayUserDatas>
     </cffunction>
 
      <!---Delete Datas--->
     <cffunction name="deleteDatas" access="remote" returnFormat="plain">
         <cfargument name="pageId" required="true">
-
         <cfquery name="deleteQuery" datasource="DESKTOP-8VHOQ47">
             SELECT pageId FROM addDataz 
             WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="CF_SQL_VARCHAR">
