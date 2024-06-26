@@ -1,0 +1,44 @@
+body{
+	padding: 0;
+    margin: 0;
+}
+.header img{
+	width: 100%;
+    height: 99vh;
+    object-fit: cover;
+}
+.heading{
+	position: absolute;
+    top: 63%;
+    left: 24%;
+}
+.headingCont{
+display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+	font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 2.5rem;
+    margin:0;
+    letter-spacing: 0.8rem;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+    color: #4b4b4b;
+    background-clip: text;
+}
+h2{
+	color: #1e1e1e;
+    opacity: 71%;
+}
+.headingCont a{
+text-decoration: none;
+    font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 0.15rem;
+    border-radius: 10px;
+    font-size: 12.85px;
+    box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+    background: #64a19d;
+    padding: 20px 32px;
+}
