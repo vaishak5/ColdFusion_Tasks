@@ -91,6 +91,42 @@ $(document).ready(function(){
         }
 
     });
+
+    $(".editBtn").click(function () {
+        var pageId = $(this).attr("data-id");
+        var _this = $(this);
+        var pageName = $("#page").val().trim();
+        var pageDesc = $("#desc").val().trim();
+    
+        if (!confirm("Are you sure you want to edit this record?")) {
+            return;
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "./Component/signup.cfc?method=updateData",
+                dataType: "json",
+                data: {
+                    pageId: pageId,
+                    pageName: pageName,
+                    pageDesc: pageDesc
+                },
+                success: function(response) {
+                    if (response) {
+                        alert("Data edited!!");
+                        window.location.href = "adminList.cfm"; 
+                    } else {
+                        alert("Failed to edit data. Please try again.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    alert("An error occurred while submitting the form. Please try again.");
+                }
+            });
+        }
+    });
+    
+    
     $(".deleting").click( function () {
         var pageId = $(this).attr("data-id");
         var _this=$(this);

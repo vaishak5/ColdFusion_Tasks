@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Add Page</title>
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
     <link rel="stylesheet" href="./style/addDatas.css">
     <link rel="stylesheet" href="./style/adminList.css">
+    <script src="./script/sourceFirst.js"></script>
+    <script src="./script/sourceSecond.js"></script>
+    <script src="./script/sourceThird.js"></script>
+    <script src="./script/jquery.min.js"></script>
+    <script src="./script/jquery-ui.min.js"></script>
+    <script src="./script/signup.js"></script>
 </head>
 <body>
-    
+    <cfset local.obj = createObject("component", "Component.signup")>
+    <cfparam name="url.id" default="">
+    <cfif structKeyExists(form, "page") and structKeyExists(form, "desc")>
+        <cfset local.editDatas = local.obj.getEditDatas(url.id, form.page, form.desc)>
+    <cfelse>
+        <cfset local.editDatas = local.obj.getEditDatas(url.id)>
+    </cfif>
     <div class="header">
         <div class="headerFirst">
             <p class="siteName">TECHFLICK</p>
@@ -20,22 +33,21 @@
     </div>
     <h2>Edit Datas Page</h2>
     <div class="datasSet">
-        <form id="datas">
+        <form id="datas" action="" method="post">
+        
             <div class="dataFt">
                 <label for="page">Title</label>
-                <input type="text" name="page"><br><br>
+                <input type="text" name="page" id="page" value="<cfoutput>#local.editDatas.page#</cfoutput>"><br><br>
             </div>
             <div class="dataSnd">
                 <label for="desc">Description</label>
-                <textarea id="desc" name="desc" rows="3" cols="21"></textarea><br><br>
+                <textarea id="desc" name="desc" rows="3" cols="21"><cfoutput>#local.editDatas.desc#</cfoutput></textarea><br><br>
             </div>
             <div class="btnSet">
-                <input type="button" value="SAVE" class="btns">
-                <input type="button" value="CANCEL" class="btns">
+                <button type="submit" class="editBtn"  data-id="#local.editDatas.pageId#" style="cursor:pointer;">SAVE</button>
+                <input type="button" value="CANCEL" class="btns" onclick="location.href='adminList.cfm';">
             </div>
-            
-        </form>
+        
     </div>
-    
 </body>
 </html>

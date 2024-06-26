@@ -97,4 +97,34 @@
             <cfreturn false>
         </cfif>
     </cffunction>
+    <!---Edit Datas--->
+    <cffunction name="getEditDatas" access="remote" returntype="any">
+    <cfargument name="pageId" required="true">
+    <cfquery name="editDatas" datasource="DESKTOP-8VHOQ47">
+        SELECT pageId, pageName, pageDesc
+        FROM addDataz 
+        WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="CF_SQL_VARCHAR">
+    </cfquery>
+    <cfset result = {}>
+    <cfif editDatas.recordCount gt 0>
+        <cfset result.page = editDatas.pageName>
+        <cfset result.desc = editDatas.pageDesc>
+    </cfif>
+    <cfreturn result>
+</cffunction>
+<!---Update Datas--->
+<cffunction name="updateData" access="remote" returnFormat="plain">
+    <cfargument name="pageId" required="true">
+    <cfargument name="pageName" required="true">
+    <cfargument name="pageDesc" required="true">
+    
+    <cfquery name="editDatass" datasource="DESKTOP-8VHOQ47">
+        UPDATE addDataz
+        SET pageName = <cfqueryparam value="#arguments.pageName#" cfsqltype="CF_SQL_VARCHAR">,
+            pageDesc = <cfqueryparam value="#arguments.pageDesc#" cfsqltype="CF_SQL_VARCHAR">
+        WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="CF_SQL_INTEGER">
+    </cfquery>
+    <cfreturn editDatass.recordCount EQ 1>
+</cffunction>
+
 </cfcomponent>
