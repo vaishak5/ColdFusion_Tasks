@@ -1,4 +1,3 @@
-
 <cfcomponent>
     <!---Sign In--->
     <cffunction  name="signupUpload" access="remote" returnFormat="plain">
@@ -25,11 +24,12 @@
     </cffunction>
     <!---LogIn--->
     <cffunction name="checkLogin" access="remote" returnFormat="plain">
-        <cfargument name="username" required="true">
-        <cfargument name="password" required="true">
+        <cfargument name="userName" required="true">
+        <cfargument name="userPassword" required="true">
         <cfquery name="checkRole" datasource="DESKTOP-8VHOQ47">
             SELECT userRole FROM signup 
-            WHERE userName=<cfqueryparam value="#arguments.username#" cfsqltype="CF_SQL_VARCHAR">
+            WHERE userName=<cfqueryparam value="#arguments.userName#" cfsqltype="CF_SQL_VARCHAR"> AND 
+            userPassword=<cfqueryparam value="#arguments.userPassword#" cfsqltype="CF_SQL_VARCHAR">
         </cfquery>
         <cfset session.role=checkRole.userRole>
         <cfif checkRole.recordCount>
@@ -74,11 +74,28 @@
 
     <!---User Page Details--->
     <cffunction name="userPageDetails" access="remote" returntype="any">
-        <cfquery name="displayUserDatas">
-            SELECT pageName, pageDesc FROM addDataz WHERE pageId = <cfqueryparam value="#url.id#" cfsqltype="cf_sql_integer">
+        <cfargument name="userName" required="true">
+        <cfargument name="userPassword" required="true">
+        <cfquery name="displayUserDatas" datasource="DESKTOP-8VHOQ47">
+            SELECT userRole FROM signup 
+            WHERE userName=<cfqueryparam value="#arguments.userName#" cfsqltype="CF_SQL_VARCHAR"> AND 
+            userPassword=<cfqueryparam value="#arguments.userPassword#" cfsqltype="CF_SQL_VARCHAR">
+        </cfquery>
+        <cfset session.role=checkRole.userRole>
+        <cfif displayUserDatas.recordCount>
+            <cfreturn true>
+        <cfelse>
+            <cfreturn false>
+        </cfif>
+        <cfreturn displayUserDatas>
+        </cffunction>
+
+            <!---<cfquery name="displayUserDatas">
+            SELECT pageName, pageDesc FROM addDataz WHERE pageId = <cfqueryparam value="#url.id#" cfsqltype="cf_sql_integer">AND 
+            pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="CF_SQL_VARCHAR">
         </cfquery>
         <cfreturn displayUserDatas>
-    </cffunction>
+    </cffunction>--->
 
      <!---Delete Datas--->
     <cffunction name="deleteDatas" access="remote" returnFormat="plain">
@@ -99,32 +116,31 @@
     </cffunction>
     <!---Edit Datas--->
     <cffunction name="getEditDatas" access="remote" returntype="any">
-    <cfargument name="pageId" required="true">
-    <cfquery name="editDatas" datasource="DESKTOP-8VHOQ47">
-        SELECT pageId, pageName, pageDesc
-        FROM addDataz 
-        WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="CF_SQL_VARCHAR">
-    </cfquery>
-    <cfset result = {}>
-    <cfif editDatas.recordCount gt 0>
-        <cfset result.page = editDatas.pageName>
-        <cfset result.desc = editDatas.pageDesc>
-    </cfif>
-    <cfreturn result>
-</cffunction>
-<!---Update Datas--->
-<cffunction name="updateData" access="remote" returnFormat="plain">
-    <cfargument name="pageId" required="true">
-    <cfargument name="pageName" required="true">
-    <cfargument name="pageDesc" required="true">
-    
-    <cfquery name="editDatass" datasource="DESKTOP-8VHOQ47">
-        UPDATE addDataz
-        SET pageName = <cfqueryparam value="#arguments.pageName#" cfsqltype="CF_SQL_VARCHAR">,
+        <cfargument name="pageId" required="true">
+        <cfquery name="editDatas" datasource="DESKTOP-8VHOQ47">
+            SELECT pageId, pageName, pageDesc
+            FROM addDataz 
+            WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="CF_SQL_VARCHAR">
+        </cfquery>
+        <cfset result = {}>
+        <cfif editDatas.recordCount gt 0>
+            <cfset result.pageId = editDatas.pageId>
+            <cfset result.page = editDatas.pageName>
+            <cfset result.desc = editDatas.pageDesc>
+        </cfif>
+        <cfreturn result>
+    </cffunction>
+    <!---Update Datas--->
+    <cffunction name="updateData" access="remote" returnFormat="plain">
+        <cfargument name="pageId" required="true">
+        <cfargument name="pageName" required="true">
+        <cfargument name="pageDesc" required="true">
+        <cfquery name="editDatass" result ="editDatassResult" datasource="DESKTOP-8VHOQ47">
+            UPDATE addDataz
+            SET pageName = <cfqueryparam value="#arguments.pageName#" cfsqltype="CF_SQL_VARCHAR">,
             pageDesc = <cfqueryparam value="#arguments.pageDesc#" cfsqltype="CF_SQL_VARCHAR">
-        WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="CF_SQL_INTEGER">
-    </cfquery>
-    <cfreturn editDatass.recordCount EQ 1>
-</cffunction>
-
+            WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="CF_SQL_INTEGER">
+        </cfquery>
+        <cfreturn result>
+    </cffunction>
 </cfcomponent>

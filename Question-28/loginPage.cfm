@@ -14,8 +14,6 @@
 <body>
     <div class="loginDetails">
         <div class="loginContents">
-            <div class="homeLink">
-            </div>
             <h2>Login</h2>
             <img src="./assets/loginLogo.png" alt="img">
             <form id="myForm">
@@ -29,7 +27,7 @@
             <div class="signup">
                 <p class="notTxt">Not a Member? <a href="signupPage.cfm">Sign Up Now</a></p>
             </div>
-       </div>
+        </div>
     </div>
 </body>
 </html>

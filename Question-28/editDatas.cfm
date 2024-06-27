@@ -33,7 +33,7 @@
     </div>
     <h2>Edit Datas Page</h2>
     <div class="datasSet">
-        <form id="datas" action="" method="post">
+        <form id="datas" action="adminList.cfm" method="post">
         
             <div class="dataFt">
                 <label for="page">Title</label>
@@ -44,8 +44,8 @@
                 <textarea id="desc" name="desc" rows="3" cols="21"><cfoutput>#local.editDatas.desc#</cfoutput></textarea><br><br>
             </div>
             <div class="btnSet">
-                <button type="submit" class="editBtn"  data-id="#local.editDatas.pageId#" style="cursor:pointer;">SAVE</button>
-                <input type="button" value="CANCEL" class="btns" onclick="location.href='adminList.cfm';">
+                <button type="submit" class="editBtn"  data-id="<cfoutput>#local.editDatas.pageId#</cfoutput>" style="cursor:pointer;">SAVE</button>
+                <input type="button" value="CANCEL" class="btns">
             </div>
         
     </div>

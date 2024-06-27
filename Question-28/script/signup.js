@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
     $("#submitClick").on("click", function () {
         var username=$("#username").val().trim();
@@ -21,7 +20,7 @@ $(document).ready(function(){
                         alert("Username already exists!");
                     }
                 },
-                error: function(xhr, status, error) {
+                error: function(xhr, status, error) { 
                     console.error(error);
                     alert("An error occurred while submitting the form. Please try again.");
                 }
@@ -31,9 +30,9 @@ $(document).ready(function(){
     });
 
     $("#loginBtn").on("click", function () {
-        var username=$("#username").val().trim();
-        var password=$("#password").val().trim();
-        if(username==""|| password==""){
+        var userName=$("#username").val().trim();
+        var userPassword=$("#password").val().trim();
+        if(username==""|| userPassword==""){
             alert("Invalid username or Password!");
         }
         else{
@@ -41,8 +40,8 @@ $(document).ready(function(){
                 type: "POST",
                 url: "./Component/signup.cfc?method=checkLogin",
                 datatype: "text",
-                data: {username:username,
-                    password: password
+                data: {userName:userName,
+                    userPassword: userPassword
                 },
                 success: function(response) {
                     if (response) {
@@ -94,26 +93,27 @@ $(document).ready(function(){
 
     $(".editBtn").click(function () {
         var pageId = $(this).attr("data-id");
-        var _this = $(this);
         var pageName = $("#page").val().trim();
         var pageDesc = $("#desc").val().trim();
-    
-        if (!confirm("Are you sure you want to edit this record?")) {
-            return;
-        } else {
+        if(pageName==""|| pageDesc==""){
+            alert("Plz enter any values in the fields!!");
+        }
+        else{
             $.ajax({
                 type: "POST",
                 url: "./Component/signup.cfc?method=updateData",
-                dataType: "json",
+                dataType: "text",
                 data: {
                     pageId: pageId,
                     pageName: pageName,
                     pageDesc: pageDesc
                 },
                 success: function(response) {
-                    if (response) {
+                    if (response === result) {
+                        var editedRow = $("#" + pageId);
+                        editedRow.find(".titleValues").text(pageName);
+                        editedRow.find(".descValues").text(pageDesc);
                         alert("Data edited!!");
-                        window.location.href = "adminList.cfm"; 
                     } else {
                         alert("Failed to edit data. Please try again.");
                     }
@@ -130,30 +130,22 @@ $(document).ready(function(){
     $(".deleting").click( function () {
         var pageId = $(this).attr("data-id");
         var _this=$(this);
-       if (!confirm("Are you sure you want to delete this record?")) {
-            return;
-        }
-        else{
-            $.ajax({
-                type: "POST",
-                url: './Component/signup.cfc?method=deleteDatas',
-                dataType: "text",
-                data: { pageId: pageId },
-                success: function(response) {
-                        alert("Datas are deleted!!!");
-                        $(_this).parents("tr").remove();
+        $.ajax({
+            type: "POST",
+            url: './Component/signup.cfc?method=deleteDatas',
+            dataType: "text",
+            data: { pageId: pageId },
+            success: function(response) {
+                alert("Datas are deleted!!!");
+                $(_this).parents("tr").remove();
     
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                    alert("Error deleting record.");
-                    
-                }
-            });
-        }
-        
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+                alert("Error deleting record.");
+            }
+        });
     });
-    
 });
 function signValidate(){
     var username=$("#username").val().trim();
