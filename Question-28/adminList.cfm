@@ -13,6 +13,7 @@
       <script src="./script/signup.js"></script>
    </head>
    <body>
+   <cfif session.login>
       <cfset local.obj = createObject("component", "Component.signup")>
       <cfset local.displayData = local.obj.getPagesDetails()>
       <cfif session.role EQ "admin" OR session.role EQ "editor">
@@ -23,7 +24,7 @@
          </div>
          <div class="headerSecond">
             <p>Hello Admin!!!</p>
-            <a href="loginPage.cfm">Log Out</a>
+            <a href="./Component/signup.cfc?method=doLogout">Log Out</a>
          </div>
       </div>
       <div class="tableStyle d-flex align-items-center justify-content-center">
@@ -87,6 +88,9 @@
          </tbody>
         </table>
       </cfif>
+   <cfelse>
+      <cflocation  url="loginPage.cfm">
+    </cfif> 
    </body>
 </html>
 </cfoutput>

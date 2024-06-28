@@ -12,6 +12,9 @@
     <script src="./script/signup.js"></script>
 </head>
 <body>
+<cfif session.login>
+    <cflocation url="loginPage.cfm">
+    <cfelse>
     <div class="loginDetails">
         <div class="loginContents">
             <h2>Sign Up</h2>
@@ -40,5 +43,6 @@
             </div>
         </div>
     </div>
+    </cfif>
 </body>
 </html>

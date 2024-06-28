@@ -13,6 +13,7 @@
     <script src="./script/cancel.js"></script>
 </head>
 <body>
+<cfif session.login>
     <div class="header">
         <div class="headerFirst">
             <p class="siteName">TECHFLICK</p>
@@ -41,6 +42,9 @@
             </div>
         </form>
     </div>
+<cfelse>
+    <cflocation url="loginPage.cfm">
+</cfif>
 </body>
 </html>
 

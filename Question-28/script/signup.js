@@ -30,9 +30,9 @@ $(document).ready(function(){
     });
 
     $("#loginBtn").on("click", function () {
-        var userName=$("#username").val().trim();
-        var userPassword=$("#password").val().trim();
-        if(username==""|| userPassword==""){
+        var username=$("#username").val().trim();
+        var password=$("#password").val().trim();
+        if(username==""|| password==""){
             alert("Invalid username or Password!");
         }
         else{
@@ -40,14 +40,14 @@ $(document).ready(function(){
                 type: "POST",
                 url: "./Component/signup.cfc?method=checkLogin",
                 datatype: "text",
-                data: {userName:userName,
-                    userPassword: userPassword
+                data: {username:username,
+                    password: password
                 },
                 success: function(response) {
-                    if (response) {
+                    if (response === "true") {
                         alert("Login Successfully!!!")
                         window.location.href = "./homePage.cfm";
-                    } else if (response === false) { 
+                    } else  { 
                         alert("No user Found!");
                     }
                 },

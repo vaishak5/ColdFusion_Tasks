@@ -24,18 +24,20 @@
     </cffunction>
     <!---LogIn--->
     <cffunction name="checkLogin" access="remote" returnFormat="plain">
-        <cfargument name="userName" required="true">
-        <cfargument name="userPassword" required="true">
+        <cfargument name="username" required="true">
+        <cfargument name="password" required="true">
         <cfquery name="checkRole" datasource="DESKTOP-8VHOQ47">
             SELECT userRole FROM signup 
-            WHERE userName=<cfqueryparam value="#arguments.userName#" cfsqltype="CF_SQL_VARCHAR"> AND 
-            userPassword=<cfqueryparam value="#arguments.userPassword#" cfsqltype="CF_SQL_VARCHAR">
+            WHERE userName=<cfqueryparam value="#arguments.username#" cfsqltype="CF_SQL_VARCHAR">
+            AND userPassword=<cfqueryparam value="#arguments.password#" cfsqltype="CF_SQL_VARCHAR">
         </cfquery>
-        <cfset session.role=checkRole.userRole>
         <cfif checkRole.recordCount>
-            <cfreturn true>
+            <cfset session.role=checkRole.userRole>
+            <cfset session.login=true>
+            <cfreturn "true">
         <cfelse>
-            <cfreturn false>
+            <cfset session.login=false>
+            <cfreturn "false">
         </cfif>
     </cffunction>
 
@@ -74,21 +76,11 @@
 
     <!---User Page Details--->
     <cffunction name="userPageDetails" access="remote" returntype="any">
-        <cfargument name="userName" required="true">
-        <cfargument name="userPassword" required="true">
-        <cfquery name="displayUserDatas" datasource="DESKTOP-8VHOQ47">
-            SELECT userRole FROM signup 
-            WHERE userName=<cfqueryparam value="#arguments.userName#" cfsqltype="CF_SQL_VARCHAR"> AND 
-            userPassword=<cfqueryparam value="#arguments.userPassword#" cfsqltype="CF_SQL_VARCHAR">
+        <cfquery name="displayUserDatas">
+            SELECT pageName, pageDesc FROM addDataz WHERE pageId = <cfqueryparam value="#url.id#" cfsqltype="cf_sql_integer">
         </cfquery>
-        <cfset session.role=checkRole.userRole>
-        <cfif displayUserDatas.recordCount>
-            <cfreturn true>
-        <cfelse>
-            <cfreturn false>
-        </cfif>
         <cfreturn displayUserDatas>
-        </cffunction>
+    </cffunction>
 
             <!---<cfquery name="displayUserDatas">
             SELECT pageName, pageDesc FROM addDataz WHERE pageId = <cfqueryparam value="#url.id#" cfsqltype="cf_sql_integer">AND 
@@ -96,8 +88,7 @@
         </cfquery>
         <cfreturn displayUserDatas>
     </cffunction>--->
-
-     <!---Delete Datas--->
+    <!---Delete Datas--->
     <cffunction name="deleteDatas" access="remote" returnFormat="plain">
         <cfargument name="pageId" required="true">
         <cfquery name="deleteQuery" datasource="DESKTOP-8VHOQ47">
@@ -142,5 +133,9 @@
             WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="CF_SQL_INTEGER">
         </cfquery>
         <cfreturn result>
+    </cffunction>
+    <cffunction  name="doLogout" returntype="any" access="remote">
+        <cfset session.login=false>
+        <cflocation url="../loginPage.cfm">
     </cffunction>
 </cfcomponent>

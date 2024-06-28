@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./style/bootstrap.min.css">
 </head>
 <body>
+<cfif session.login>
     <cfset local.obj = createObject("component", "Component.signup")>
     <cfset local.userDisplay = local.obj.userPageDetails()>
     <div class="header">
@@ -38,6 +39,9 @@
             </tbody>
         </table>
     </div>
+<cfelse>
+    <cflocation  url="loginPage.cfm">
+</cfif> 
 </body>
 </html>
 </cfoutput>

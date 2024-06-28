@@ -10,7 +10,7 @@
         <cflocation url="login.cfm" addtoken="false">
     <cfelse>
         <p>Welcome to the user!</p>
-        <a href="logout.cfm">Go to the Login</a>
+        <a href="logout.cfm">Logout</a>
     </cfif>
 </body>
 </html>

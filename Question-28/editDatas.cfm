@@ -13,6 +13,7 @@
     <script src="./script/signup.js"></script>
 </head>
 <body>
+<cfif session.login>
     <cfset local.obj = createObject("component", "Component.signup")>
     <cfparam name="url.id" default="">
     <cfif structKeyExists(form, "page") and structKeyExists(form, "desc")>
@@ -49,5 +50,8 @@
             </div>
         
     </div>
+    <cfelse>
+        <cflocation  url="loginPage.cfm">
+    </cfif> 
 </body>
 </html>
