@@ -48,7 +48,7 @@ $(document).ready(function(){
                         alert("Login Successfully!!!")
                         window.location.href = "./homePage.cfm";
                     } else  { 
-                        alert("No user Found!");
+                        alert("User Not Found!!!");
                     }
                 },
                 error: function(xhr, status, error) {

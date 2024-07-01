@@ -35,7 +35,6 @@
     <h2>Edit Datas Page</h2>
     <div class="datasSet">
         <form id="datas" action="adminList.cfm" method="post">
-        
             <div class="dataFt">
                 <label for="page">Title</label>
                 <input type="text" name="page" id="page" value="<cfoutput>#local.editDatas.page#</cfoutput>"><br><br>

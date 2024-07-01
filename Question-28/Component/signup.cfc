@@ -1,4 +1,5 @@
 <cfcomponent>
+
     <!---Sign In--->
     <cffunction  name="signupUpload" access="remote" returnFormat="plain">
         <cfargument name="username" required="true">
@@ -22,6 +23,7 @@
             <cfreturn true>
         </cfif>
     </cffunction>
+
     <!---LogIn--->
     <cffunction name="checkLogin" access="remote" returnFormat="plain">
         <cfargument name="username" required="true">
@@ -65,8 +67,7 @@
     </cffunction>
 
     <!---Get Page Datas(ADMIN)--->
-
-   <cffunction name="getPagesDetails" access="remote" returntype="any">
+    <cffunction name="getPagesDetails" access="remote" returntype="any">
         <cfquery name="displayDatas">
             SELECT pageId,pageName,pageDesc 
             FROM addDataz
@@ -82,12 +83,6 @@
         <cfreturn displayUserDatas>
     </cffunction>
 
-            <!---<cfquery name="displayUserDatas">
-            SELECT pageName, pageDesc FROM addDataz WHERE pageId = <cfqueryparam value="#url.id#" cfsqltype="cf_sql_integer">AND 
-            pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="CF_SQL_VARCHAR">
-        </cfquery>
-        <cfreturn displayUserDatas>
-    </cffunction>--->
     <!---Delete Datas--->
     <cffunction name="deleteDatas" access="remote" returnFormat="plain">
         <cfargument name="pageId" required="true">
@@ -105,6 +100,7 @@
             <cfreturn false>
         </cfif>
     </cffunction>
+
     <!---Edit Datas--->
     <cffunction name="getEditDatas" access="remote" returntype="any">
         <cfargument name="pageId" required="true">
@@ -114,13 +110,14 @@
             WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="CF_SQL_VARCHAR">
         </cfquery>
         <cfset result = {}>
-        <cfif editDatas.recordCount gt 0>
+        <cfif editDatas.recordCount>
             <cfset result.pageId = editDatas.pageId>
             <cfset result.page = editDatas.pageName>
             <cfset result.desc = editDatas.pageDesc>
         </cfif>
         <cfreturn result>
     </cffunction>
+
     <!---Update Datas--->
     <cffunction name="updateData" access="remote" returnFormat="plain">
         <cfargument name="pageId" required="true">
@@ -134,6 +131,8 @@
         </cfquery>
         <cfreturn result>
     </cffunction>
+
+    <!---LogOut--->
     <cffunction  name="doLogout" returntype="any" access="remote">
         <cfset session.login=false>
         <cflocation url="../loginPage.cfm">

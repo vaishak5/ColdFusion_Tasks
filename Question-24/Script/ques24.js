@@ -10,9 +10,9 @@ $(document).ready(function() {
             url: 'Component/ques24.cfc?method=mailCheck',
             type: 'post',
             data: {name: name, email: email}, 
-            dataType: "json",
+            dataType: "text",
             success: function(response) {
-                if (response.message == "existing") {
+                if (response === "true") {
                     alert('Email id is Already Subscribed');
                     $('#submitBtn').prop('disabled',true);
                 } else {
@@ -33,10 +33,10 @@ $(document).ready(function() {
             url: 'Component/ques24.cfc?method=uploadMail',
             type: 'post',
             data: {name: name, email: email}, 
-            dataType: "json",
+            dataType: "text",
             
             success: function(response) {
-                if (response == "success") {
+                if (response === "true") {
                     alert('Email id Subscribed Successfully');
                 }
             },

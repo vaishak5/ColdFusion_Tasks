@@ -1,8 +1,9 @@
 <cfcomponent>
-    <cffunction  name="getIdentify">
-        <cfargument  name="imgName">
-        <cfargument  name="descTxt">
-        <cfargument  name="myfile">
+    <!---Enter values and upload Images--->
+    <cffunction  name="getIdentify" returntype="any">
+        <cfargument  name="imgName" required="true"> 
+        <cfargument  name="descTxt" required="true">
+        <cfargument  name="myfile" required="true">
         <cfset local.imgPath = expandPath("./Assets/")>
         <cfset local.img = "">
         <cffile action="upload" destination="#local.imgPath#" nameconflict="makeunique">
@@ -20,8 +21,10 @@
             WHERE Images=<cfqueryparam value="#local.img#">
         </cfquery>
         <cfset local.id=values.ID>
-        <cflocation  url="ques14ListPage.cfm?imgg=#local.id#">
+        <cflocation  url="ques14ListPage.cfm?listPage=#local.id#">
     </cffunction>
+
+    <!---Get img name(link) and the img--->
     <cffunction  name="getValue">
         <cfargument  name="getImg">
         <cfquery name="values" datasource="DESKTOP-8VHOQ47">
@@ -30,6 +33,8 @@
         </cfquery>
         <cfreturn values>
     </cffunction>
+
+    <!---display img name,description,image--->
     <cffunction  name="display">
         <cfargument  name="details">
         <cfquery name="values" datasource="DESKTOP-8VHOQ47">

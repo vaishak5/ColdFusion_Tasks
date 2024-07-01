@@ -7,12 +7,12 @@
 </head>
 <body>
     <h2>Display Page</h2>
-    <cfset local.details=url.imggg>
+    <cfset local.details=url.displayDetails>
     <cfset obj=createObject("component","Component.ques14").display(local.details)>
     <cfoutput>
-        #obj.ImageName#<BR>
-        #obj.DescTxt#<BR>
-        <img class="imgSizee" src="./Assets/#obj.Images#">
+        #obj.ImageName#<br><br>
+        #obj.DescTxt#<br><br>
+        <img src="./Assets/#obj.Images#">
     </cfoutput>
 </body>
 </html>

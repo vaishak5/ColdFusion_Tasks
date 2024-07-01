@@ -7,11 +7,10 @@
 </head>
 <body>
     <h2>List Page</h2>
-    <cfset local.getImg = url.imgg>
+    <cfset local.getImg = url.listPage>
     <cfset obj=createObject("component", "Component.ques14").getValue(local.getImg)>
-    <a href="ques14displayPage.cfm?imggg=#local.getImg#">#obj.ImageName#</a>
+    <a href="ques14displayPage.cfm?displayDetails=#local.getImg#">#obj.ImageName#</a>
     <img class="imgSize" src="./Assets/#obj.Images#">
 </body>
 </html>
 </cfoutput>
-

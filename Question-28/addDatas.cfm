@@ -42,8 +42,9 @@
             </div>
         </form>
     </div>
-<cfelse>
-    <cflocation url="loginPage.cfm">
+    <cfelse>
+        <cflocation url="loginPage.cfm">
+    </cfif>
 </cfif>
 </body>
 </html>
