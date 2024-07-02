@@ -47,7 +47,7 @@
                 <button type="submit" class="editBtn"  data-id="<cfoutput>#local.editDatas.pageId#</cfoutput>" style="cursor:pointer;">SAVE</button>
                 <input type="button" value="CANCEL" class="btns">
             </div>
-        
+        </form>
     </div>
     <cfelse>
         <cflocation  url="loginPage.cfm">

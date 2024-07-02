@@ -19,7 +19,7 @@
                 <cfqueryparam value="#arguments.phone#" cfsqltype="CF_SQL_VARCHAR">
             )
         </cfquery>
-        <cfreturn {"success":true}>
+        <cfreturn "true">
     </cffunction>
 </cfcomponent>
 

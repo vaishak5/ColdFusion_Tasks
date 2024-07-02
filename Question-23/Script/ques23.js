@@ -4,7 +4,7 @@ $(document).ready(function () {
         var textBoxFt = $("#textBoxSnd").val().trim();
         var textBoxSnd = $("#textBoxFt").val().trim();
         var textBoxThd = $("#textBoxThd").val().trim();
-        var year =  textBoxSnd + "/" + textBoxFt + "/" +  textBoxThd;
+        var year =  textBoxSnd+"/"+textBoxFt +"/"+textBoxThd;
         var url = $("#urlCont").val().trim();
         var firstName = $("#firstname").val().trim();
         var lastName = $("#lastname").val().trim();
