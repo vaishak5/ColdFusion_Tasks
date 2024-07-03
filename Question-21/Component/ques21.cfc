@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cffunction name="getDetails">
+    <cffunction name="getDetails" returntype="any">
         <cfargument name="babyName" required>
         <cfargument name="emailId" required>
         <cfargument name="bdayWish" required>

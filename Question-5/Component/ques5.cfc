@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cffunction name="calculateAges" returntype="struct">
+    <cffunction name="calculateAges" returntype="any">
         <cfargument name="userDOB" type="date" required="true">
         <cfargument name="motherDOB" type="date" required="true">
         <cfset var result = {}>

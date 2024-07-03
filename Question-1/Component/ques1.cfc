@@ -1,6 +1,6 @@
 <cfcomponent>
-    <cffunction name="getRating" returntype="string">
-        <cfargument name="ratings" type="numeric" required="true">
+    <cffunction name="getRating" returntype="any">
+        <cfargument name="ratings" required="true">
         
         <cfif arguments.ratings EQ 5>
             <cfreturn "Very good">

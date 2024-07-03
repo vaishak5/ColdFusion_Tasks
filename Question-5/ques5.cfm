@@ -13,8 +13,8 @@
         <input type="submit" name="submit" value="Submit">
     </form>
     <cfif structKeyExists(form, "submit") and structKeyExists(form, "userDOB") and structKeyExists(form, "motherDOB")>
-        <cfset AgeBoth = createObject("component", "Component.ques5")>
-        <cfset local.result = AgeBoth.calculateAges(form.userDOB, form.motherDOB)>
+        <cfset ageBoth = createObject("component", "Component.ques5")>
+        <cfset local.result = ageBoth.calculateAges(form.userDOB, form.motherDOB)>
         <h2>Results:</h2>
         <cfoutput><h2>User's Age : #local.result.userAge# years</h2></cfoutput>
         <cfoutput><h2>Mother's Age Now : #local.result.motherAge# years</h2></cfoutput>

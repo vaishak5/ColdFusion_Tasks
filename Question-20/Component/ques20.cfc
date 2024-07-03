@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cffunction name="getIdentify" returntype="string">
+    <cffunction name="getIdentify" returntype="any">
         <cfargument name="captcha" required="true">
         <cfset result = "">
         <cfif arguments.captcha EQ session.captchaInput>

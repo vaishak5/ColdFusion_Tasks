@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cffunction name="datas">
+    <cffunction name="datas" returntype="any">
         <cfset local.values = QueryNew("ID,NAME,EMAIL","integer,varchar,varchar",
         [[1,"Messi","messi10@gmail.com"],
         [2,"Ronaldo","ronaldo7@gmail.com"],

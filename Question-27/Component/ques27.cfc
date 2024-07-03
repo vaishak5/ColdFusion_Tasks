@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cffunction name="getIdentify" returntype="array">
+    <cffunction name="getIdentify" returntype="any">
         <cfargument name="email" required="true">
         <cfargument name="password" required="true">
         <cfset var errorMsg = []>

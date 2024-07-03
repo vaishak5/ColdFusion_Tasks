@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cffunction name="getIdentify">
+    <cffunction name="getIdentify" returntype="any">
         <cfargument name="key" required="true">
         <cfargument name="value" required="true">
         <cfif structKeyExists(session.struct, arguments.key)>

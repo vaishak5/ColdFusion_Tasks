@@ -1,6 +1,6 @@
 <cfcomponent>
-   <cffunction name="getRating">
-      <cfargument name="value">
+   <cffunction name="getRating" returntype="any">
+      <cfargument name="value"  type="numeric" required="true">
       <cfset var output = "">
       <cfloop from="1" to="#arguments.value#" index="i">
          <cfif i mod 2 eq 0>
