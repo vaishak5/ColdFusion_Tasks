@@ -1,3 +1,4 @@
+<cfoutput>
 <cfapplication name="userLogin" sessionmanagement="true">
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +10,7 @@
     <cfif structKeyExists(session, "login") AND session.login>
         <cflocation url="welcome.cfm" addtoken="false">
     <cfelse>
-        <form method="post" action="login.cfm">
+        <form method="post" action="" name="checkForm" >
             <label for="email">Enter the user name:</label>
             <input type="email" name="email" id="email" ><br><br>
             <label for="password">Enter the password:</label>
@@ -23,9 +24,11 @@
                 <cfset session.login = true>
                 <cflocation url="welcome.cfm" addtoken="false">
             <cfelse>
-                <cfoutput><h2>Error occured</h2></cfoutput>
+                <cfoutput><cfloop array="#local.result#" index="error"><h4>#error#</h4></cfloop>
+                </cfoutput>
             </cfif>
         </cfif>
     </cfif>
 </body>
 </html>
+</cfoutput>

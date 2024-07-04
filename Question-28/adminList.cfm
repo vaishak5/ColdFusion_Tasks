@@ -1,18 +1,18 @@
 <cfoutput>
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <title>Admin's ViewList</title>
-      <link rel="stylesheet" href="./style/adminList.css">
-      <link rel="stylesheet" href="./style/bootstrap.min.css">
-      <script src="./script/sourceFirst.js"></script>
-      <script src="./script/sourceSecond.js"></script>
-      <script src="./script/sourceThird.js"></script>
-      <script src="./script/jquery.min.js"></script>
-      <script src="./script/jquery-ui.min.js"></script>
-      <script src="./script/signup.js"></script>
-   </head>
-   <body>
+<head>
+   <title>Admin's ViewList</title>
+   <link rel="stylesheet" href="./style/adminList.css">
+   <link rel="stylesheet" href="./style/bootstrap.min.css">
+   <script src="./script/sourceFirst.js"></script>
+   <script src="./script/sourceSecond.js"></script>
+   <script src="./script/sourceThird.js"></script>
+   <script src="./script/jquery.min.js"></script>
+   <script src="./script/jquery-ui.min.js"></script>
+   <script src="./script/signup.js"></script>
+</head>
+<body>
    <cfif session.login>
       <cfset local.obj = createObject("component", "Component.signup")>
       <cfset local.displayData = local.obj.getPagesDetails()>
@@ -91,7 +91,7 @@
       </cfif>
       <cfelse>
          <cflocation  url="loginPage.cfm">
-      </cfif> 
-   </body>
-   </html>
+   </cfif> 
+</body>
+</html>
 </cfoutput>

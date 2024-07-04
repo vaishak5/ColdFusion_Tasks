@@ -45,7 +45,7 @@
     <cfelse>
         <cflocation url="loginPage.cfm">
     </cfif>
-</cfif>
+
 </body>
 </html>
 

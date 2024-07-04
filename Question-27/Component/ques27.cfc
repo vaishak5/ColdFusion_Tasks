@@ -3,11 +3,11 @@
         <cfargument name="email" required="true">
         <cfargument name="password" required="true">
         <cfset var errorMsg = []>
-        <cfif NOT isValid("email", arguments.email)>
-            <cfset arrayAppend(errorMsg, "Please enter a valid email address")>
+        <cfif len(trim(arguments.email)) EQ 0>
+            <cfset arrayAppend(errorMsg, "Please enter the email address")>
         </cfif>
-        <cfif len(trim(arguments.password)) EQ "">
-            <cfset arrayAppend(errorMsg, "Please enter a password")>
+        <cfif len(trim(arguments.password)) EQ 0>
+            <cfset arrayAppend(errorMsg, "Please enter the password")>
         </cfif>
         <cfreturn errorMsg>
     </cffunction>

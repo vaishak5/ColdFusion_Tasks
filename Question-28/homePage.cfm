@@ -36,7 +36,7 @@
                 </div>
                 <div class="headerSecond">
                     <p>Hello User!!!</p>
-                    <a href="loginPage.cfm">Log Out</a>
+                    <a href="./Component/signup.cfc?method=doLogout">Log Out</a>
                 </div>
             </div>
             <div class="userFeat">
@@ -54,6 +54,5 @@
     <cfelse>
         <cflocation  url="loginPage.cfm">
     </cfif>    
-    
 </body>
 </html>

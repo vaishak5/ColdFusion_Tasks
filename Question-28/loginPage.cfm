@@ -14,7 +14,7 @@
 <body>
 <cfif session.login>
     <cflocation url="homePage.cfm">
-    <cfelse>
+     <cfelse>
         <div class="loginDetails">
             <div class="loginContents">
                 <h2>Login</h2>

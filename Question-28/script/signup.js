@@ -110,7 +110,7 @@ $(document).ready(function(){
                 },
                 success: function(response) {
                     if (response === result) {
-                        var editedRow = $("#" + pageId);
+                        var editedRow = $("#" + pageId);//select the row elements with id(pageId) attribute
                         editedRow.find(".titleValues").text(pageName);
                         editedRow.find(".descValues").text(pageDesc);
                         alert("Data edited!!");
@@ -129,15 +129,15 @@ $(document).ready(function(){
     
     $(".deleting").click( function () {
         var pageId = $(this).attr("data-id");
-        var _this=$(this);
+        var deleting=$(this);
         $.ajax({
             type: "POST",
             url: './Component/signup.cfc?method=deleteDatas',
             dataType: "text",
             data: { pageId: pageId },
             success: function(response) {
-                alert("Datas are deleted!!!");
-                $(_this).parents("tr").remove();
+                alert("Data is deleted successfully!!");
+                $(deleting).parents("tr").remove();//remove previous row element datas
     
             },
             error: function(xhr, status, error) {
